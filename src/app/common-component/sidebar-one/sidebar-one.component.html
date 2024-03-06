@@ -1,0 +1,150 @@
+<!-- Sidebar -->
+<div
+  class="sidebar"
+  [dir]="SharedService.dir() == 'ar' ? 'rtl' : 'ltr'"
+  id="sidebar"
+  (mouseover)="miniSideBarMouseHover('over')"
+  (mouseout)="miniSideBarMouseHover('out')"
+>
+  <div class="sidebar-inner slimscroll">
+    <perfect-scrollbar>
+      <div id="sidebar-menu" class="sidebar-menu">
+        <ul *ngIf="!isMasterAdmin">
+          <ng-container *ngFor="let mainMenus of sidebarData">
+            <ng-container *ngFor="let menu of mainMenus.subRoutes">
+              <li
+                *ngIf="
+                  menu.hasSubRoute == false &&
+                  (mainMenus.tittle == 'Main Menu' ||
+                    mainMenus.tittle == 'Components')
+                "
+                [class.active]="menu.activeRoute == activePath"
+              >
+                <a [routerLink]="menu.route" (click)="(mainMenus.action)"
+                  ><img [src]="menu.icon" alt="icon" /><span>
+                    {{ menu.tittle | translate }}
+                  </span>
+                </a>
+              </li>
+              <ng-container *ngIf="menu.hasSubRoute == true">
+                <li class="submenu">
+                  <a
+                    [ngClass]="{
+                      active: activePath === menu.activeRoute,
+                      subdrop: menu.showSubRoute == true
+                    }"
+                    (click)="showSubMenus(menu)"
+                    ><img [src]="menu.icon" alt="img" /><span>
+                      {{ menu.tittle | translate }}</span
+                    >
+                    <span
+                      class="menu-arrow"
+                      [dir]="SharedService.dir() == 'ar' ? 'rtl' : 'ltr'"
+                    ></span
+                  ></a>
+                  <ul
+                    [ngClass]="
+                      menu.showSubRoute == true
+                        ? 'show-sub-menu'
+                        : 'hide-sub-menu'
+                    "
+                  >
+                    <ng-container *ngFor="let subDropMenus of menu.subRoutes">
+                      <li>
+                        <a
+                          [routerLink]="subDropMenus.route"
+                          routerLinkActive="active"
+                          >{{ subDropMenus.tittle | translate }}</a
+                        >
+                      </li>
+                    </ng-container>
+                  </ul>
+                </li>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+ 
+        </ul>
+        <ul  *ngIf="isMasterAdmin">
+          <li>
+            <a     routerLink="/master-admin/organization"
+            routerLinkActive="active-link">
+            <mat-icon> info </mat-icon>
+
+              <span>
+                {{ "Organization" | translate }}
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+            (click)="!SharedService.getPropOrg ? showSetupAlert() : null"
+            [routerLink]="
+              SharedService.getPropOrg ? ['/master-admin/companies/create'] : []
+            "
+            [routerLinkActive]="SharedService.getPropOrg ? 'active-link' : ''"
+            >
+            <!-- matTooltip="{{ 'Create New Company' | translate }}" -->
+            <mat-icon> add_circle </mat-icon>
+            <span> {{ "Create New Company" | translate }}</span>
+          </a>
+          </li>
+          <li>
+
+          <a
+          (click)="!SharedService.getPropOrg ? showSetupAlert() : null"
+          [routerLink]="
+            SharedService.getPropOrg ? ['/master-admin/companies/list'] : []
+          "
+          [routerLinkActive]="SharedService.getPropOrg ? 'active-link' : ''"
+          >
+          <!-- matTooltip="{{ 'View Companies List' | translate }}" -->
+          <mat-icon> list_alt </mat-icon>
+          <span class=""> {{ "View Companies List" | translate }}</span>
+        </a>
+      </li>
+      <li>
+
+        <a
+        (click)="!SharedService.getPropOrg ? showSetupAlert() : null"
+        [routerLink]="
+          SharedService.getPropOrg ? ['/master-admin/users/create/new'] : []
+        "
+        [routerLinkActive]="SharedService.getPropOrg ? 'active-link' : ''"
+        >
+        <!-- matTooltip="{{ 'Create New User' | translate }}" -->
+        <mat-icon> add_circle </mat-icon>
+        <span class=""> {{ "Create New User" | translate }}</span>
+      </a>
+      </li>
+      <li>
+
+
+      <a
+      (click)="!SharedService.getPropOrg ? showSetupAlert() : null"
+      [routerLink]="SharedService.getPropOrg ? ['/master-admin/users/list'] : []"
+      [routerLinkActive]="SharedService.getPropOrg ? 'active-link' : ''"
+      >
+      <!-- matTooltip="{{ 'View Users List' | translate }}" -->
+      <mat-icon> list_alt </mat-icon>
+      <span class=""> {{ "View Users List" | translate }}</span>
+    </a>
+  </li>
+
+        </ul>
+        <ul>
+          <li>
+            <a (click)="logout()">
+              <mat-icon alt="icon"> logout </mat-icon>
+
+              <span>
+                {{ "logout" | translate }}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>
+<!-- /Sidebar -->

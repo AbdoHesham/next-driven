@@ -1,0 +1,78 @@
+<div mat-dialog-title style="display: flex; justify-content: space-between">
+  <h2>{{ "User Information" | translate }}</h2>
+  <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+  <div class="row" [dir]="SharedService.dir() == 'ar' ? 'rtl' : 'ltr'">
+  
+    <div class="col-md-6">
+      <div class="main-list">
+        <ul class="list-info">
+          <li class="details-header">
+              {{ "First Name" | translate }}:<span class="list-details">{{
+                defaults.fullName.split(' ')[0] || "N/A"
+              }}</span>
+            </li>
+          <li class="details-header">
+            {{ "Last Name" | translate }}:<span class="list-details">{{
+              defaults.fullName.split(' ')[1] || "N/A"
+            }}</span>
+          </li>
+          <li class="details-header">
+            {{ "Phone Number" | translate }}:<span class="list-details">{{
+              defaults.phoneNumber || "N/A"
+            }}</span>
+          </li>
+          <li class="details-header">
+            {{ "Email" | translate }}:<span class="list-details"
+              >{{ defaults.email || "N/A" }} </span
+            >
+          </li>
+          <li class="details-header">
+            {{ "Assign User Role" | translate }}:<span class="list-details">{{
+              defaults.userRoleStr || "N/A" 
+            }}</span>
+          </li>
+   
+        </ul>
+      </div>
+  
+    </div>
+    <div class="col-md-6 ">
+        <div class="main-list">
+          <ul class="list-info">
+            <li class="details-header">
+              {{ "Assigned Company" | translate }}:<span class="list-details">{{
+                defaults.assignedCompany || "N/A"
+              }}</span>
+            </li>
+            <li class="details-header">
+              {{ "Default Printer" | translate }}:<span class="list-details">{{
+                defaults.defaultPrinter || "N/A"
+              }}</span>
+            </li>
+            <li class="details-header">
+              {{ "Kitchen Printer" | translate }}:<span class="list-details">
+                {{ defaults.kitchenPrinter || "N/A" }}</span
+              >
+            </li>
+            <li class="details-header">
+              {{ "User Name" | translate }}:<span class="list-details">
+                {{ defaults.userName || "N/A" }}</span
+              >
+            </li>
+            <!-- <li class="details-header">
+              {{ "Password" | translate }}:<span class="list-details">
+                {{ defaults.buildingNumber || "N/A" }}</span
+              >
+            </li> -->
+  
+          </ul>
+        </div>
+   
+    </div>
+  </div>
+
+</mat-dialog-content>

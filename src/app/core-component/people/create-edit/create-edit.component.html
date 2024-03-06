@@ -1,0 +1,461 @@
+<div mat-dialog-title style="display: flex; align-items: center">
+  <h2 class="userInfo mt-2">
+    {{
+      defaults?.id !== null
+        ? ("Edit Customer" | translate)
+        : ("Create New Customer" | translate)
+    }}
+  </h2>
+  <!-- <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+        <mat-icon>close</mat-icon>
+      </button> -->
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+  <form [formGroup]="Form">
+    <div class="row mb-5 d-flex" style="margin-left: 2px; margin-right: 2px">
+      <div class="col-lg-5 col-m-12 col-sm-12">
+        <div class="form-group mb-3">
+          <label class="label-key mt-2">{{ "First Name" | translate }} *</label>
+          <input
+            type="text"
+            class="form-control input-value"
+            name="FirstName"
+            formControlName="FirstName"
+            required
+          />
+
+          <div
+            *ngIf="
+              Form.get('FirstName')?.touched && Form.get('FirstName')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form.get('FirstName')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('FirstName')?.errors?.['minlength']">
+                {{ "minlength is 3 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('FirstName')?.errors?.['maxlength']">
+                {{ "maxlength is 50 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('FirstName')?.errors?.['pattern']">
+                {{ "Enter characters only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="label-key mt-2">{{ "Last Name" | translate }} *</label>
+          <input
+            type="text"
+            class="form-control input-value"
+            name="LastName"
+            formControlName="LastName"
+            required
+          />
+
+          <div
+            *ngIf="
+              Form.get('LastName')?.touched && Form.get('LastName')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form.get('LastName')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('LastName')?.errors?.['minlength']">
+                {{ "minlength is 3 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('LastName')?.errors?.['maxlength']">
+                {{ "maxlength is 50 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('LastName')?.errors?.['pattern']">
+                {{ "Enter characters only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="label-key mt-2"
+            >{{ "Reward balance" | translate }} *</label
+          >
+          <input
+            type="text"
+            class="form-control input-value"
+            name="Rewardbalance"
+            formControlName="Rewardbalance"
+            required
+          />
+
+          <div
+            *ngIf="
+              Form.get('Rewardbalance')?.touched &&
+              Form.get('Rewardbalance')?.errors
+            "
+          >
+            <div>
+              <mat-error
+                *ngIf="Form.get('Rewardbalance')?.errors?.['required']"
+              >
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-5 col-m-12 col-sm-12">
+        <div class="form-group mb-3">
+          <label class="label-key mt-2">{{ "VAT Number" | translate }} *</label>
+          <input
+            type="text"
+            class="form-control input-value"
+            name="VATNumber"
+            formControlName="VATNumber"
+            required
+          />
+
+          <div
+            *ngIf="
+              Form.get('VATNumber')?.touched && Form.get('VATNumber')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form.get('VATNumber')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="label-key mt-2">{{ "Email" | translate }} *</label>
+          <input
+            type="email"
+            class="form-control input-value"
+            name="Email"
+            formControlName="Email"
+            required
+          />
+
+          <div *ngIf="Form.get('Email')?.touched && Form.get('Email')?.errors">
+            <div>
+              <mat-error *ngIf="Form.get('Email')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="form-group mb-3">
+            <label class="label-key mt-2">{{
+              "VAT Number" | translate
+            }}</label>
+            <input
+              type="text"
+              class="form-control input-value"
+              name="VATNumber"
+              formControlName="VATNumber"
+              required
+            />
+    
+            <div *ngIf="Form.get('VATNumber')?.touched && Form.get('VATNumber')?.errors">
+              <div>
+                <mat-error *ngIf="Form.get('VATNumber')?.errors?.['required']">
+                  {{ "this field is required" | translate }}
+                </mat-error>
+              </div>
+              
+             
+             
+            </div>
+          </div> -->
+      </div>
+    </div>
+  </form>
+  <hr />
+  <form [formGroup]="Form2" style="margin-bottom: -24px">
+    <h2 class="companyInfo">{{ "Customer Address" | translate }}</h2>
+    <div class="row mb-5 d-flex" style="margin-left: 2px; margin-right: 2px">
+      <div class="col-lg-5 col-m-12 col-sm-12">
+        <div class="form-group mt-3">
+          <label
+            for="selectCountry"
+            class=" label-key mt-2"
+            >{{ "Country" | translate }} *</label
+          >
+          <select
+            class="form-select custom-select"
+            id="selectCountry"
+            formControlName="Country"
+          >
+            <option
+              *ngFor="let country of countries"
+              [value]="country.id"
+              class="custom-option"
+            >
+              {{ country.name }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              Form2.get('Country')?.touched && Form2.get('Country')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form2.get('Country')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="selectCity" class=" label-key mt-2"
+            >{{ "City" | translate }} *</label
+          >
+          <select class="form-select" id="selectCity" formControlName="City">
+            <option
+              *ngFor="let city of cities"
+              [value]="city.id"
+              class="custom-option"
+            >
+              {{ city.name }}
+            </option>
+          </select>
+          <div *ngIf="Form2.get('City')?.touched && Form2.get('City')?.errors">
+            <div>
+              <mat-error *ngIf="Form2.get('City')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label
+            for="selectDistrict"
+            class=" label-key mt-2"
+            >{{ "District" | translate }} *</label
+          >
+          <select
+            class="form-select"
+            id="selectDistrict"
+            formControlName="District"
+          >
+            <option
+              *ngFor="let district of districts"
+              [value]="district.id"
+              class="custom-option"
+            >
+              {{ district.name }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              Form2.get('District')?.touched && Form2.get('District')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form2.get('District')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-5 col-m-12 col-sm-12">
+        <div class="form-group" style="margin-top: 15px">
+          <label class="label-key mt-2">{{ "Street" | translate }} *</label>
+          <input
+            type="text"
+            class="form-control input-value"
+            name="Street"
+            formControlName="Street"
+            style="height: 48px"
+          />
+          <div
+            *ngIf="Form2.get('Street')?.touched && Form2.get('Street')?.errors"
+          >
+            <div>
+              <mat-error *ngIf="Form2.get('Street')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 15px">
+          <label class="label-key mt-2"
+            >{{ "Building Number" | translate }} *</label
+          >
+          <input
+            type="text"
+            class="form-control input-value"
+            name="BuildingNumber"
+            formControlName="BuildingNumber"
+            style="height: 48px"
+          />
+          <div
+            *ngIf="
+              Form2.get('BuildingNumber')?.touched &&
+              Form2.get('BuildingNumber')?.errors
+            "
+          >
+            <div>
+              <mat-error
+                *ngIf="Form2.get('BuildingNumber')?.errors?.['required']"
+              >
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error
+                *ngIf="Form2.get('BuildingNumber')?.errors?.['pattern']"
+              >
+                {{ "Enter Digits only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 15px">
+          <label class="label-key mt-2"
+            >{{ "Postal Code" | translate }} *</label
+          >
+          <input
+            type="text"
+            class="form-control input-value"
+            name="PostalCode"
+            formControlName="PostalCode"
+            style="height: 48px"
+          />
+          <div
+            *ngIf="
+              Form2.get('PostalCode')?.touched &&
+              Form2.get('PostalCode')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form2.get('PostalCode')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form2.get('PostalCode')?.errors?.['pattern']">
+                {{ "Enter Digits only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <hr />
+  <form [formGroup]="Form3" style="margin-bottom: -24px">
+    <h2 class="companyInfo">
+      {{ "Contact Information" | translate }}
+    </h2>
+    <div class="row mb-5 d-flex" style="margin-left: 2px; margin-right: 2px">
+      <div class="col-lg-5 col-m-12 col-sm-12">
+        <div class="form-group mt-2">
+          <label class="label-key mt-2"
+            >{{ "Customer Phone Number" | translate }} *</label
+          >
+          <input
+            type="text"
+            class="form-control input-value"
+            name="masterPhone"
+            formControlName="masterPhone"
+            style="height: 48px"
+          />
+          <div
+            *ngIf="
+              Form3.get('masterPhone')?.touched &&
+              Form3.get('masterPhone')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form3.get('masterPhone')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form3.get('masterPhone')?.errors?.['pattern']">
+                {{ "Enter Digits only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-5 col-m-12 col-sm-12">
+        <div class="form-group mt-2">
+          <label class="label-key mt-2"
+            >{{ "Customer Mobile Number" | translate }} *</label
+          >
+          <input
+            type="text"
+            class="form-control input-value"
+            name="masterMobile"
+            formControlName="masterMobile"
+            style="height: 48px"
+          />
+          <div
+            *ngIf="
+              Form3.get('masterMobile')?.touched &&
+              Form3.get('masterMobile')?.errors
+            "
+          >
+            <div>
+              <mat-error
+                *ngIf="Form3.get('masterMobile')?.errors?.['required']"
+              >
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form3.get('masterMobile')?.errors?.['pattern']">
+                {{ "Enter Digits only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="row" align="end">
+  <div class="col-md-6"></div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-7">
+        <button
+          class="btn btn-login"
+          (click)="submit()"
+          [disabled]="Form.invalid || Form2.invalid || Form3.invalid"
+        >
+          {{
+            defaults?.id !== null
+              ? ("Save" | translate)
+              : ("Create" | translate)
+          }}
+        </button>
+      </div>
+      <div class="col-md-5">
+        <button class="btn btn-login" mat-dialog-close>
+          {{ "Cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-dialog-actions>

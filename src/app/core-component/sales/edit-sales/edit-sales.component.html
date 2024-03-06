@@ -1,0 +1,121 @@
+
+<div class="page-header">
+    <div class="page-title">
+       
+        <h6>{{"Edit orderType"|translate}}</h6>
+    </div>
+  </div>
+  <!-- /add -->
+  <div class="card">
+    <div class="card-body">
+        <form [formGroup]="Form">
+            <div class="row">
+                <div class="col-lg-12">
+                
+                    <div class="form-group">
+                        
+                        <div class="image-upload">
+                            <input type="file"
+                            id="file-input"
+                            
+                              #file
+                           (change)="preview(file.files)"
+                           accept="image/*">
+                            <div class="image-uploads">
+                                <img src="assets/img/icons/upload.svg" alt="img">
+                                <h4 *ngIf="imgName !== '' || imgName !== undefined">
+                                    {{ imgName }}
+                                </h4>
+                                  <h4 *ngIf="imgName == '' || imgName == undefined">
+                                    {{ "Add" | translate }}
+                                    <span style="color: #667085">{{ "Or" | translate }}</span>
+                                    {{ "Select" | translate }}
+                                    <span style="color: #667085">{{
+                                      "Category Icon" | translate
+                                    }}</span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{
+                          "Order Type Name" | translate
+                          }}*</label>
+                        <input type="text"
+                        name="Name"
+                        formControlName="Name"
+                        required
+                        >
+                         <div *ngIf="Form.get('Name')?.touched && Form.get('Name')?.errors">
+                            <div *ngIf="Form.get('Name')?.errors?.['required']">
+                              
+                               <span class="text-danger"> {{ "this field is required" | translate }} </span>
+                              
+                            </div>
+                            <div *ngIf="Form.get('Name')?.errors?.['minlength']">
+                              <span class="text-danger">
+                                {{ "minlength is 3 character" | translate }}
+                              </span>
+                                
+                              
+                            </div>
+                            <div *ngIf="Form.get('Name')?.errors?.['maxlength']">
+                              <span class="text-danger">
+                                {{ "maxlength is 50 character" | translate }}
+                              </span>
+                            </div>
+                            <div *ngIf="Form.get('Name')?.errors?.['pattern']">
+                              <span class="text-danger">
+                                {{ "Enter characters only" | translate }}
+                              </span>
+                            
+                          </div> 
+                    </div>
+                   </div>
+                </div>
+                
+              
+                <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{
+                          "Sorting Number" | translate
+                          }}</label>
+                        <input type="text" 
+                        name="sortingNumber"
+                        formControlName="sortingNumber"
+                        
+                        required>
+                         <div
+                        *ngIf="
+                          Form.get('sortingNumber')?.touched &&
+                          Form.get('sortingNumber')?.errors
+                        "
+                      >
+                        <div *ngIf="Form.get('sortingNumber')?.errors?.['required']">
+                          <span class="text-danger" >
+                            {{ "this field is required" | translate }}
+                          </span>
+                        </div>
+              
+                      </div> 
+                    </div>
+                   
+                </div>
+               
+            
+                <div class="col-lg-12">
+                    <a href="javascript:void(0);" class="btn btn-submit me-2" >{{"Update"|translate}}</a>
+                    <a [routerLink]="routes.salesList" class="btn btn-cancel">{{"Cancel"|translate}}</a>
+                </div>
+            </div>
+        </form>
+      
+    </div>
+  </div>
+  <!-- /add -->
+  
+  

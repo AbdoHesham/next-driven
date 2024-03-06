@@ -1,0 +1,126 @@
+.btn-white-outline {
+    box-sizing: border-box;
+  
+    /* Auto layout */
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+  
+    width: 285px;
+    height: 48px;
+  
+    background: #ffffff;
+    /* Gray/500 */
+  
+    border: 1px solid #667085;
+    border-radius: 8px;
+  }
+  .btn-white-outline:disabled,
+  .btn-white-outline[disabled] {
+    box-sizing: border-box;
+  
+    /* Auto layout */
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+  
+    width: 285px;
+    height: 48px;
+  
+    background: #ffffff;
+    /* Gray/500 */
+  
+    border: 1px solid #667085;
+    border-radius: 8px;
+  }
+  
+  .btn-white-red {
+    box-sizing: border-box;
+  
+    /* Auto layout */
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+  
+    width: 285px;
+    height: 48px;
+  
+    background: #ffdad7;
+    color: #f04438;
+    outline: #ffdad7;
+    border: 1px solid #ffdad7;
+  
+    /* Gray/500 */
+  
+    // border: 1px solid #667085;
+    border-radius: 8px;
+  }
+  .btn-white-red:disabled,
+  .btn-white-red[disabled] {
+    box-sizing: border-box;
+  
+    /* Auto layout */
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+  
+    width: 285px;
+    height: 48px;
+  
+    background: #ffdad7;
+    color: #f04438;
+    /* Gray/500 */
+    outline: #ffdad7;
+    border: 1px solid #ffdad7;
+  
+    // border: 1px solid #667085;
+    border-radius: 8px;
+  }
+  .btn-gred {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+    height: 48px;
+    /* PrimaryColor/Gred2 */
+    background: #358a8a;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+  }
+  .btn-gred:disabled,
+  .btn-gred[disabled] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+    height: 48px;
+    /* PrimaryColor/Gred2 */
+    background: #d9eded;
+  
+    // background: $main_btn_color_disabled;
+    border-radius: 8px;
+    color: #358a8a;
+    border: none;
+  }
+  

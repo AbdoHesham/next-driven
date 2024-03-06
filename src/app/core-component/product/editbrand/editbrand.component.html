@@ -1,0 +1,173 @@
+
+        <div class="page-header">
+            <div class="page-title">
+                <h4>{{"UOM Edit"|translate}}</h4>
+                <h6>{{"Update your Brand"|translate}}</h6>
+            </div>
+        </div>
+        <!-- /add -->
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="Form">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                
+                                <div class="image-upload">
+                                    <input type="file"
+                                    id="file-input"
+                                    
+                                      #file
+                                   (change)="preview(file.files)"
+                                   accept="image/*">
+                                    <div class="image-uploads">
+                                        <img src="assets/img/icons/upload.svg" alt="img">
+                                        <h4 *ngIf="imgName !== '' || imgName !== undefined">
+                                            {{ imgName }}
+                                        </h4>
+                                          <h4 *ngIf="imgName == '' || imgName == undefined">
+                                            {{ "Add" | translate }}
+                                            <span style="color: #667085">{{ "Or" | translate }}</span>
+                                            {{ "Select" | translate }}
+                                            <span style="color: #667085">{{
+                                              "Category Icon" | translate
+                                            }}</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>{{
+                                    "UOM Name" | translate
+                                  }}*</label>
+                                <input type="text"
+                                name="UomName"
+                                formControlName="UomName"
+                              required
+                                >
+                                 <div *ngIf="Form.get('UomName')?.touched && Form.get('UomName')?.errors">
+                                    <div *ngIf="Form.get('UomName')?.errors?.['required']">
+                                      
+                                       <span class="text-danger"> {{ "this field is required" | translate }} </span>
+                                      
+                                    </div>
+                                    <div *ngIf="Form.get('UomName')?.errors?.['minlength']">
+                                      <span class="text-danger">
+                                        {{ "minlength is 3 character" | translate }}
+                                      </span>
+                                        
+                                      
+                                    </div>
+                                    <div *ngIf="Form.get('UomName')?.errors?.['maxlength']">
+                                      <span class="text-danger">
+                                        {{ "maxlength is 50 character" | translate }}
+                                      </span>
+                                    </div>
+                                    <div *ngIf="Form.get('UomName')?.errors?.['pattern']">
+                                      <span class="text-danger">
+                                        {{ "Enter characters only" | translate }}
+                                      </span>
+                                    
+                                  </div> 
+                            </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>{{"UOM Code"|translate}}*</label>
+                                <input type="text"
+                                name="UOMCode"
+                                formControlName="UOMCode"
+                               required >
+                                <div *ngIf="Form.get('UOMCode')?.touched && Form.get('UOMCode')?.errors">
+                                <div *ngIf="Form.get('UOMCode')?.errors?.['required']">
+                                  <span class="text-danger" >
+                                    {{ "this field is required" | translate }}
+                                  </span>
+                                </div>
+                                <div *ngIf="Form.get('UOMCode')?.errors?.['minlength']">
+                                  <span class="text-danger">
+                                    {{ "minlength is 3 character" | translate }}
+                                  </span>
+                                </div>
+                                <div  *ngIf="Form.get('UOMCode')?.errors?.['maxlength']">
+                                  <span class="text-danger">
+                                    {{ "maxlength is 50 character" | translate }}
+                                  </span>
+                                </div>
+                                <div *ngIf="Form.get('UOMCode')?.errors?.['pattern']">
+                                  <span class="text-danger">
+                                    {{ "Enter characters only" | translate }}
+                                    
+                                  </span>
+                                </div>
+                              </div> 
+                            </div>
+                           
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>{{ "Sorting Number" | translate }}*</label>
+                                <input type="text"
+                                name="sortingNumber"
+                            formControlName="sortingNumber"
+                              required >
+                              <div
+                              *ngIf="
+                                Form.get('sortingNumber')?.touched &&
+                                Form.get('sortingNumber')?.errors
+                              "
+                            >
+                              <div *ngIf="Form.get('sortingNumber')?.errors?.['required']">
+                                <span class="text-danger" >
+                                  {{ "this field is required" | translate }}
+                                </span>
+                              </div>
+                             
+                            </div>
+                            </div>
+                           
+                        </div>
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>{{
+                                    "Parent Category" | translate
+                                  }}</label>
+                                <input type="text" 
+                                name="parentCategory"
+                               formControlName="parentCategory"
+                                required>
+                                 <div
+                                *ngIf="
+                                  Form.get('parentCategory')?.touched &&
+                                  Form.get('parentCategory')?.errors
+                                "
+                              >
+                                <div *ngIf="Form.get('parentCategory')?.errors?.['required']">
+                                  <span class="text-danger" >
+                                    {{ "this field is required" | translate }}
+                                  </span>
+                                </div>
+                      
+                              </div> 
+                            </div>
+                           
+                        </div>
+              
+                        
+              
+                       
+              
+                       
+                        <div class="col-lg-12">
+                            <a href="javascript:void(0);" class="btn btn-submit me-2" >{{"Submit"|translate}}</a>
+                            <a [routerLink]="routes.categoryList" class="btn btn-cancel">{{"Cancel"|translate}}</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /add -->

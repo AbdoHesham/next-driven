@@ -1,0 +1,124 @@
+<div class="account-content">
+  <div class="login-wrapper">
+    <div class="login-content">
+      <div class="login-userset">
+        <div class="login-logo logo-normal">
+          <img src="assets/img/logo.png" alt="img" />
+        </div>
+        <!-- <a [routerLink]="routes.dashboard" class="login-logo logo-white">
+          <img src="assets/img/logo-white.png" alt="" />
+        </a> -->
+        <div class="login-userheading">
+          <h3>{{ "Welcome To POS, Login now!" | translate }}</h3>
+        </div>
+        <form [formGroup]="Form">
+          <div class="form-login">
+            <label>{{ "Username Or Email Address" | translate }}</label>
+            <div class="form-addons">
+              <input
+                type="text"
+                placeholder="Enter your email address"
+                formControlName="email"
+                id="email"
+                [ngClass]="{
+                  'is-invalid': f['email'].touched && f['email'].invalid
+                }"
+              />
+              <img src="assets/img/icons/mail.svg" alt="img" />
+            </div>
+            <!-- <div
+              class="invalid-feedback"
+              *ngIf="CustomControler?.status === 'email'"
+            >
+              {{ CustomControler.message }}
+            </div> -->
+            <div
+              *ngIf="f['email'].touched && f['email'].invalid"
+              class="invalid-feedback text-red d-block"
+            >
+              <div *ngIf="f['email'].errors && f['email'].errors['required']">
+                {{ "this field is required" | translate }}
+              </div>
+              <div *ngIf="f['email'].errors && f['email'].errors['email']">
+                Please, enter valid email address.
+              </div>
+            </div>
+          </div>
+          <div class="form-login">
+            <label>{{ "Password" | translate }}</label>
+            <div class="pass-group">
+              <input
+                [type]="show ? 'text' : 'password'"
+                class="pass-input"
+                placeholder="Enter your password"
+                formControlName="password"
+                id="password"
+                [ngClass]="{
+                  'is-invalid': f['password'].touched && f['password'].invalid
+                }"
+              />
+              <span
+                [class]="
+                  show
+                    ? 'fas toggle-password fa-eye'
+                    : 'fas toggle-password fa-eye-slash'
+                "
+                (click)="show = !show"
+              ></span>
+            </div>
+            <div
+              *ngIf="f['password'].touched && f['password'].errors"
+              class="text-red"
+            >
+              <div>
+                <div *ngIf="f['password'].errors?.['required']">
+                  {{ "this field is required" | translate }}
+                </div>
+              </div>
+              <div>
+                <div *ngIf="f['password'].errors?.['minlength']">
+                  {{ "minlength is 8 character" | translate }}
+                </div>
+              </div>
+              <div>
+                <div *ngIf="f['password'].errors?.['maxlength']">
+                  {{ "maxlength is 50 character" | translate }}
+                </div>
+              </div>
+              <div>
+                <div *ngIf="f['password'].errors?.['pattern']">
+                  {{ "Password Should Complex Pattern" | translate }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- <div class="form-login">
+          <div class="alreadyuser">
+            <h4>
+              <a [routerLink]="routes.forgotPassword" class="hover-a"
+                >Forgot Password?</a
+              >
+            </h4>
+          </div>
+        </div> -->
+        <div class="form-login">
+          <button
+            (click)="login()"
+            [disabled]="Form.invalid"
+            class="btn btn-login"
+          >
+            {{ "login" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="login-img">
+      <img
+        src="assets/img/pos-login.png"
+        alt="img"
+        style="height: 74vh; width: 100%"
+      />
+    </div>
+  </div>
+</div>

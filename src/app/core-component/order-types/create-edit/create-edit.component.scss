@@ -1,0 +1,29 @@
+@media (max-width: 600px) {
+  .main-details {
+    height: 100%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .main-details {
+    height: 100%;
+  }
+}
+
+mat-dialog-content {
+  width: 498px !important;
+  height: auto !important;
+  border-radius: 16px;
+  // padding:50px;
+}
+@media only screen and (max-width: 1100px) {
+  mat-dialog-content {
+    width: auto !important;
+    height: auto !important;
+  }
+}
+::ng-deep.mat-dialog-container {
+  border-radius: 16px;
+}
+// mat-dialog-actions{
+//   margin-bottom: 100px;
+// }

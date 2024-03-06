@@ -1,0 +1,42 @@
+<div mat-dialog-title style="display: flex; justify-content: space-between">
+    <h2>{{ "Order Type Information" | translate }}</h2>
+    <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>  
+  <div class="row" [dir]="SharedService.dir() == 'ar' ? 'rtl' : 'ltr'">
+    <div class="col-md-4">
+      <img src="assets/img/one restaurant icon.png" alt="" />
+    </div>
+    <div class="col-md-8">
+      <div class="main-list">
+        <ul class="list-info">
+          <li class="details-header">
+            {{
+              "Order Type Name" | translate
+            }}:<span class="list-details">{{
+              defaults.name || "N/A"
+            }}</span>
+          </li>
+          <li class="details-header">
+            {{ "Sorting Number" | translate }}:<span class="list-details">{{
+              defaults.sortingNumber !== null ?defaults.sortingNumber  :   "N/A"
+            }}</span>
+          </li>
+        
+          <li class="details-header">
+            {{ "Created By" | translate }}:<span class="list-details">
+              {{ defaults.creatorBy || "N/A" }}</span
+            >
+          </li>
+          <li class="details-header">
+              {{ "Creation Date" | translate }}:<span class="list-details">
+                {{ (defaults.createdAt | date : 'longDate') || "N/A" }}</span
+              >
+            </li>
+  
+        </ul>
+      </div>
+    </div>
+  </div>
+

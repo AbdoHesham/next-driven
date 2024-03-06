@@ -1,0 +1,126 @@
+<div mat-dialog-title align="end" >
+  <!-- <h2 class="company-header">{{ "Add license Period" | translate }}</h2> -->
+  <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="row" [dir]="SharedService.dir() == 'ar' ? 'rtl' : 'ltr'">
+  <div class="col-md-3">
+    <img
+      [src]="!defaults.logo ? 'assets/img/Carrd logo.png' : defaults.logo"
+      onerror="this.src='assets/img/Carrd logo.png'"
+    />
+  </div>
+  <div class="col-md-4">
+    <div class="main-list">
+      <h2>{{ "Company Information" | translate }}</h2>
+      <ul class="list-info">
+        <li class="details-header">
+            {{ "Company Name" | translate }}:<span class="list-details">{{
+              defaults.companyName || "N/A"
+            }}</span>
+          </li>
+        <li class="details-header">
+          {{ "Company Type" | translate }}:<span class="list-details">{{
+            defaults.typeStr || "N/A"
+          }}</span>
+        </li>
+        <li class="details-header">
+          {{ "VAT Type" | translate }}:<span class="list-details">{{
+            defaults.vatTypeStr || "N/A"
+          }}</span>
+        </li>
+        <li class="details-header">
+          {{ "VAT Percentage" | translate }}:<span class="list-details"
+            >{{ defaults.vatPercentage || "N/A" }} %</span
+          >
+        </li>
+        <li class="details-header">
+          {{ "Pricing type" | translate }}:<span class="list-details">{{
+            defaults.isPriceIncludeVAT == 1
+              ? ("pricing includes VAT" | translate)
+              : ("Pricing Not includes VAT" | translate)
+          }}</span>
+        </li>
+        <li class="details-header">
+          {{ "Receipt notes" | translate }}:<span class="list-details">{{
+            defaults.receiptNotes || "N/A"
+          }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="main-list">
+      <h2>{{ "Assigned Company Manager" | translate }}</h2>
+      <ul class="list-info">
+        <li class="details-header">
+          {{ "Company Manager" | translate }}:<span class="list-details">{{
+            defaults.assignedManager || "N/A"
+          }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div>
+      <div class="main-list">
+        <h2>{{ "Company Address" | translate }}</h2>
+        <ul class="list-info">
+          <li class="details-header">
+            {{ "Country" | translate }}:<span class="list-details">{{
+              defaults.countryID || "N/A"
+            }}</span>
+          </li>
+          <li class="details-header">
+            {{ "City" | translate }}:<span class="list-details">{{
+              defaults.cityID || "N/A"
+            }}</span>
+          </li>
+          <li class="details-header">
+            {{ "District" | translate }}:<span class="list-details">
+              {{ defaults.districtID || "N/A" }}</span
+            >
+          </li>
+          <li class="details-header">
+            {{ "Street" | translate }}:<span class="list-details">
+              {{ defaults.streetName || "N/A" }}</span
+            >
+          </li>
+          <li class="details-header">
+            {{ "Building Number" | translate }}:<span class="list-details">
+              {{ defaults.buildingNumber || "N/A" }}</span
+            >
+          </li>
+          <li class="details-header">
+            {{ "Postal Code" | translate }}:<span class="list-details">
+              {{ defaults.postalCode || "N/A" }}</span
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="main-list">
+        <h2>{{ "license Period" | translate }}</h2>
+        <ul class="list-info d-flex" style="align-items: center">
+          <li
+            class="details-header"
+            style="display: flex; flex-direction: column; margin-top: 0;"
+          >
+            {{ "Start Date" | translate }}:<span class="list-details">
+              {{ defaults.licenseStartDate | date: "longDate" }}
+            </span>
+          </li>
+          <span>
+            <img src="assets/img/icons/fi_arrow-right-circle.png" alt="" />
+          </span>
+          <li
+            class="details-header"
+            style="display: flex; flex-direction: column;margin-top: 0; "
+          >
+            {{ "End Date" | translate }}:<span class="list-details">
+              {{ defaults.licenseEndDate | date: "longDate" }}
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

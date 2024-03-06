@@ -1,0 +1,253 @@
+<div mat-dialog-title style="display: flex; justify-content: space-between">
+  <h2 class="userInfo">{{ "Edit User Information" | translate }}</h2>
+  <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+
+  <form [formGroup]="Form">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="label-key mt-2">
+            {{ "First Name" | translate }}
+          </label>
+          <input
+            type="text"
+            class="form-control input-value"
+            name="firstName"
+            formControlName="firstName"
+            required
+          />
+          <div
+            *ngIf="
+              Form.get('firstName')?.touched && Form.get('firstName')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form.get('firstName')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('firstName')?.errors?.['minlength']">
+                {{ "minlength is 3 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('firstName')?.errors?.['maxlength']">
+                {{ "maxlength is 50 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('firstName')?.errors?.['pattern']">
+                {{ "Enter characters only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label-key mt-2">{{ "Last Name" | translate }}</label>
+          <input
+            type="text"
+            class="form-control input-value"
+            name="lastName"
+            formControlName="lastName"
+            required
+          />
+  
+          <div
+            *ngIf="Form.get('lastName')?.touched && Form.get('lastName')?.errors"
+          >
+            <div>
+              <mat-error *ngIf="Form.get('lastName')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('lastName')?.errors?.['minlength']">
+                {{ "minlength is 3 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('lastName')?.errors?.['maxlength']">
+                {{ "maxlength is 50 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('lastName')?.errors?.['pattern']">
+                {{ "Enter characters only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="label-key mt-2">{{ "Phone Number" | translate }}</label>
+          <input
+            type="tel"
+            class="form-control input-value"
+            name="phoneNumber"
+            formControlName="phoneNumber"
+            required
+          />
+          <div
+            *ngIf="
+              Form.get('phoneNumber')?.touched && Form.get('phoneNumber')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form.get('phoneNumber')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="label-key mt-2">
+            {{ "Email" | translate }}
+          </label>
+          <input
+            type="email"
+            class="form-control input-value"
+            name="Email"
+            formControlName="Email"
+            required
+          />
+          <div *ngIf="Form.get('Email')?.touched && Form.get('Email')?.errors">
+            <div>
+              <mat-error *ngIf="Form.get('Email')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('Email')?.errors?.['email']">
+                {{ "please enter valid email" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="label-key mt-2">
+            {{ "Default Printer" | translate }}
+          </label>
+          <input
+            type="text"
+            class="form-control input-value"
+            name="defaultPrinter"
+            formControlName="defaultPrinter"
+            required
+          />
+          <div
+            *ngIf="
+              Form.get('defaultPrinter')?.touched &&
+              Form.get('defaultPrinter')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form.get('defaultPrinter')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label-key mt-2">
+            {{ "Kitchen Printer" | translate }}
+          </label>
+          <input
+            type="text"
+            class="form-control input-value"
+            name="kitchenPrinter"
+            formControlName="kitchenPrinter"
+            required
+          />
+          <div
+            *ngIf="
+              Form.get('kitchenPrinter')?.touched &&
+              Form.get('kitchenPrinter')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form.get('kitchenPrinter')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="label-key mt-2">{{ "User Name" | translate }}</label>
+          <input
+            class="form-control input-value"
+            type="text"
+            name="userName"
+            formControlName="userName"
+            required
+            readonly
+          />
+          <div
+            *ngIf="Form.get('userName')?.touched && Form.get('userName')?.errors"
+          >
+            <div>
+              <mat-error *ngIf="Form.get('userName')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <label class="label-key mt-2">{{ "Password" | translate }}</label>
+          <input
+            class="form-control input-value"
+            type="password"
+            name="Password"
+            formControlName="Password"
+            required
+          />
+          <div
+            *ngIf="Form.get('Password')?.touched && Form.get('Password')?.errors"
+          >
+            <div>
+              <mat-error *ngIf="Form.get('Password')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('Password')?.errors?.['minlength']">
+                {{ "minlength is 8 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('Password')?.errors?.['maxlength']">
+                {{ "maxlength is 50 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form.get('Password')?.errors?.['pattern']">
+                {{ "Password Should Complex Pattern" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div class="main-stepper-btn">
+    <button
+      class="btn-gred"
+      style="width: 104px"
+      [disabled]="Form.invalid"
+      (click)="submit()"
+    >
+      Save Edit
+    </button>
+  </div>
+</mat-dialog-actions>

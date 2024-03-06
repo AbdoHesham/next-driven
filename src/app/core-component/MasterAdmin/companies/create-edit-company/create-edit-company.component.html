@@ -1,0 +1,1173 @@
+<div [dir]="SharedService.dir() == 'en' ? 'ltr' : 'rtl'">
+  <div class="row company-containt">
+    <div class="col-lg-12 position-relative company-create bg-white">
+      <div class="container bg-white">
+        <h2 class="header position-absolute">
+          {{
+            id !== null
+              ? ("Edit Company" | translate)
+              : ("Create New Company" | translate)
+          }}
+        </h2>
+        <mat-stepper [linear]="false" #stepper>
+          <mat-step [stepControl]="Form">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="col-md-12">
+                  <h2 class="companyInfo">
+                    {{ "Company Information" | translate }}
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <form [formGroup]="Form">
+                <div class="row">
+                  <div class="col-lg-3 col-m-6 col-sm-6">
+                    <div class="form-group" style="overflow: hidden">
+                      <div class="custom-image-upload">
+                        <label for="file-input">
+                          <img src="assets/img/Frame.png" />
+                          <p *ngIf="imgName !== '' || imgName !== undefined">
+                            {{ imgName }}
+                          </p>
+                          <p *ngIf="imgName == '' || imgName == undefined">
+                            {{ "Add Company Logo" | translate }}*
+                          </p>
+                        </label>
+
+                        <input
+                          id="file-input"
+                          type="file"
+                          #file
+                          (change)="preview(file.files)"
+                          accept="image/*"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-5 mr-4">
+                    <div class="form-group">
+                      <label class="label-key mt-5">
+                        {{ "Company Name - EN" | translate }}*
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control input-value"
+                        name="companyNameEN"
+                        formControlName="companyNameEN"
+                      />
+                      <div
+                        *ngIf="
+                          Form.get('companyNameEN')?.touched &&
+                          Form.get('companyNameEN')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('companyNameEN')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('companyNameEN')?.errors?.['minlength']"
+                          >
+                            {{ "minlength is 3 character" | translate }}
+                          </mat-error>
+                        </div>
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('companyNameEN')?.errors?.['maxlength']"
+                          >
+                            {{ "maxlength is 50 character" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-key mt-3">
+                        {{ "Company Name - AR" | translate }}*
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control input-value"
+                        name="CompanyNameAR"
+                        formControlName="CompanyNameAR"
+                      />
+                      <div
+                        *ngIf="
+                          Form.get('CompanyNameAR')?.touched &&
+                          Form.get('CompanyNameAR')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('CompanyNameAR')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('CompanyNameAR')?.errors?.['minlength']"
+                          >
+                            {{ "minlength is 3 character" | translate }}
+                          </mat-error>
+                        </div>
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('CompanyNameAR')?.errors?.['maxlength']"
+                          >
+                            {{ "maxlength is 50 character" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <h3 class="toggle-header">
+                        {{ "VAT Type" | translate }}*
+                      </h3>
+                      <mat-button-toggle-group
+                        name="fontStyle"
+                        aria-label="Font Style"
+                        formControlName="vatType"
+                      >
+                        <mat-button-toggle
+                          *ngFor="let vat of vatTypes"
+                          [value]="vat.id"
+                          name="vatType"
+                          >{{ vat.name }}</mat-button-toggle
+                        >
+                      </mat-button-toggle-group>
+                      <div
+                        *ngIf="
+                          Form.get('vatType')?.touched &&
+                          Form.get('vatType')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('vatType')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group custom-margin">
+                      <h3 class="toggle-header">
+                        {{ "Company Type" | translate }}*
+                      </h3>
+                      <mat-button-toggle-group
+                        name="fontStyle"
+                        aria-label="Font Style"
+                        formControlName="companyType"
+                      >
+                        <mat-button-toggle
+                          *ngFor="let company of companyTypes"
+                          [value]="company.id"
+                          name="companyType"
+                          >{{ company.name }}</mat-button-toggle
+                        >
+                      </mat-button-toggle-group>
+                      <div
+                        *ngIf="
+                          Form.get('companyType')?.touched &&
+                          Form.get('companyType')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('companyType')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-5">
+                    <div class="form-group">
+                      <label class="label-key mt-5">
+                        {{ "VAT Percentage" | translate }}*
+                      </label>
+                      <input
+                        type="number"
+                        class="form-control input-value"
+                        name="VATPercentage"
+                        formControlName="VATPercentage"
+                      />
+                      <div
+                        *ngIf="
+                          Form.get('VATPercentage')?.touched &&
+                          Form.get('VATPercentage')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('VATPercentage')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-key mt-3">
+                        {{ "VAT Number" | translate }}*
+                      </label>
+                      <input
+                        type="number"
+                        class="form-control input-value"
+                        name="VATNumber"
+                        formControlName="VATNumber"
+                      />
+                      <div
+                        *ngIf="
+                          Form.get('VATNumber')?.touched &&
+                          Form.get('VATNumber')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('VATNumber')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group mt-2">
+                      <div class="custom-toggle">
+                        <input
+                          class="custom-checkboxprice"
+                          type="checkbox"
+                          name="IsPriceIncludeVAT"
+                          formControlName="IsPriceIncludeVAT"
+                        />
+                        <label
+                          class="custom-label"
+                          for="flexSwitchCheckDefault"
+                          >{{ "Pricing type" | translate }}</label
+                        >
+                        <br />
+                        <span class="custom-label2">{{
+                          "pricing includes VAT." | translate
+                        }}</span>
+                      </div>
+                    </div>
+
+                    <div class="form-group custom-margin">
+                      <label class="label-key mt-2">
+                        {{ "Receipt notes" | translate }}*
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control input-value"
+                        name="Receiptnotes"
+                        formControlName="Receiptnotes"
+                      />
+                      <div
+                        *ngIf="
+                          Form.get('Receiptnotes')?.touched &&
+                          Form.get('Receiptnotes')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form.get('Receiptnotes')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="foot-stepper">
+                  <button
+                    matStepperNext
+                    class="btn-gred position-absolute nxtbtn"
+                    #nextBtn
+                    [disabled]="Form.invalid"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 8H15M15 8L8 1M15 8L8 15"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </mat-step>
+          <mat-step [stepControl]="Form2">
+            <form
+              [formGroup]="Form2"
+              class="position-relative"
+              class="form-custom-height"
+            >
+              <div class="row">
+                <h2 class="companyInfo">{{ "Company Address" | translate }}</h2>
+                <div class="col-lg-5 col-m-12 col-sm-12">
+                  <div class="form-group mt-3">
+                    <label
+                      for="selectCountry"
+                      class="col-sm-2 control-label label-key"
+                      >{{ "Country" | translate }}*</label
+                    >
+                    <select
+                      class="form-select custom-select"
+                      id="selectCountry"
+                      formControlName="Country"
+                    >
+                      <option
+                        *ngFor="let country of countries"
+                        [value]="country.id"
+                        class="custom-option"
+                      >
+                        {{ country.name }}
+                      </option>
+                    </select>
+                    <div
+                      *ngIf="
+                        Form2.get('Country')?.touched &&
+                        Form2.get('Country')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form2.get('Country')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label
+                      for="selectCity"
+                      class="col-sm-2 control-label label-key"
+                      >{{ "City" | translate }}*</label
+                    >
+                    <select
+                      class="form-select"
+                      id="selectCity"
+                      formControlName="City"
+                    >
+                      <option
+                        *ngFor="let city of cities"
+                        [value]="city.id"
+                        class="custom-option"
+                      >
+                        {{ city.name }}
+                      </option>
+                    </select>
+                    <div
+                      *ngIf="
+                        Form2.get('City')?.touched && Form2.get('City')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form2.get('City')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label
+                      for="selectDistrict"
+                      class="col-sm-2 control-label label-key"
+                      >{{ "District" | translate }}*</label
+                    >
+                    <select
+                      class="form-select"
+                      id="selectDistrict"
+                      formControlName="District"
+                    >
+                      <option
+                        *ngFor="let district of districts"
+                        [value]="district.id"
+                        class="custom-option"
+                      >
+                        {{ district.name }}
+                      </option>
+                    </select>
+                    <div
+                      *ngIf="
+                        Form2.get('District')?.touched &&
+                        Form2.get('District')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form2.get('District')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-5 col-m-12 col-sm-12">
+                  <div class="form-group mt-3">
+                    <label class="label-key">{{ "Street" | translate }}*</label>
+                    <input
+                      type="text"
+                      class="form-control custom-input input-value"
+                      name="Street"
+                      formControlName="Street"
+                    />
+                    <div
+                      *ngIf="
+                        Form2.get('Street')?.touched &&
+                        Form2.get('Street')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form2.get('Street')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label class="label-key"
+                      >{{ "Building Number" | translate }}*</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control custom-input input-value"
+                      name="BuildingNumber"
+                      formControlName="BuildingNumber"
+                    />
+                    <div
+                      *ngIf="
+                        Form2.get('BuildingNumber')?.touched &&
+                        Form2.get('BuildingNumber')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form2.get('BuildingNumber')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form2.get('BuildingNumber')?.errors?.['pattern']"
+                        >
+                          {{ "Enter Digits only" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label class="label-key"
+                      >{{ "Postal Code" | translate }}*</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control custom-input input-value"
+                      name="PostalCode"
+                      formControlName="PostalCode"
+                    />
+                    <div
+                      *ngIf="
+                        Form2.get('PostalCode')?.touched &&
+                        Form2.get('PostalCode')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form2.get('PostalCode')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form2.get('PostalCode')?.errors?.['pattern']"
+                        >
+                          {{ "Enter Digits only" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <a
+                      [routerLink]=""
+                      class="detect-address"
+                      (click)="detectAddress()"
+                      >{{ "Detect My Address" | translate }}</a
+                    >
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="foot-stepper">
+                <button
+                  matStepperPrevious
+                  class="btn-gred2 position-absolute prevbtn"
+                  #prevbtn
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 8H1M1 8L8 15M1 8L8 1"
+                      stroke="#40A5A6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  matStepperNext
+                  class="btn-gred position-absolute nxtbtn2"
+                  #nextBtn2
+                  [disabled]="Form2.invalid"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 8H15M15 8L8 1M15 8L8 15"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="Form3">
+            <div class="row">
+              <div class="col-lg-6">
+                <form [formGroup]="Form3" class="form-custom-height">
+                  <h2 class="companyInfo">
+                    {{ "Contact Information" | translate }}
+                  </h2>
+                  <div class="form-group mt-2">
+                    <label class="label-key mt-2">{{
+                      "Master Branch Phone Number" | translate
+                    }}</label>
+                    <input
+                      type="number"
+                      class="form-control input-value"
+                      name="masterPhone"
+                      formControlName="masterPhone"
+                    />
+                    <div
+                      *ngIf="
+                        Form3.get('masterPhone')?.touched &&
+                        Form3.get('masterPhone')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form3.get('masterPhone')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form3.get('masterPhone')?.errors?.['pattern']"
+                        >
+                          {{ "Enter Digits only" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-2">
+                    <label class="label-key mt-2">{{
+                      "Master Branch Mobile Number" | translate
+                    }}</label>
+                    <input
+                      type="number"
+                      class="form-control input-value"
+                      name="masterMobile"
+                      formControlName="masterMobile"
+                    />
+                    <div
+                      *ngIf="
+                        Form3.get('masterMobile')?.touched &&
+                        Form3.get('masterMobile')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form3.get('masterMobile')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form3.get('masterMobile')?.errors?.['pattern']"
+                        >
+                          {{ "Enter Digits only" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-2">
+                    <label class="label-key mt-2">{{
+                      "Contact Person" | translate
+                    }}</label>
+                    <input
+                      type="text"
+                      class="form-control input-value"
+                      name="contactPerson"
+                      formControlName="contactPerson"
+                    />
+                    <div
+                      *ngIf="
+                        Form3.get('contactPerson')?.touched &&
+                        Form3.get('contactPerson')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form3.get('contactPerson')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <!-- <div>
+                      <mat-error *ngIf="Form3.get('contactPerson')?.errors?.['pattern']">
+                        {{ "Enter Digits only" | translate }}
+                      </mat-error>
+                    </div> -->
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="foot-stepper">
+              <button
+                matStepperPrevious
+                class="btn-gred2 position-absolute prevbtn"
+                #prevbtn2
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 8H1M1 8L8 15M1 8L8 1"
+                    stroke="#40A5A6"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <button
+                matStepperNext
+                class="btn-gred position-absolute nxtbtn2"
+                #nextBtn3
+                [disabled]="Form3.invalid"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 8H15M15 8L8 1M15 8L8 15"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </mat-step>
+
+          <mat-step [stepControl]="Form4">
+            <form [formGroup]="Form4" class="form-custom-height">
+              <div>
+                <h2 class="company-header">
+                  {{ "Assign company manager" | translate }}
+                </h2>
+              </div>
+
+              <div>
+                <div class="row">
+                  <div class="col-lg-6" *ngIf="managers?.length > 0 && !show">
+                    <select
+                      class="form-select"
+                      id="selectDistrict"
+                      formControlName="userCompanyRoleID"
+                    >
+                      <option
+                        *ngFor="let manager of managers"
+                        [value]="manager.userCompanyRoleID"
+                      >
+                        {{ manager.fullName }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="col-lg-12 d-flex">
+                    <span
+                      *ngIf="managers?.length < 1 && !show"
+                      class="company-manager"
+                    >
+                      {{ "We haven't added any manager role yet." | translate }}
+                    </span>
+
+                    <span>
+                      <a class="company-link" (click)="toggle()" *ngIf="!show">
+                        <!-- [routerLink]="['/master-admin/companies/create']" -->
+                        {{ "Create New Manager" | translate }}
+                      </a></span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- </div> -->
+
+              <div class="create-manager" *ngIf="show">
+                <h2 class="companyInfo">{{ "Add new manager" | translate }}</h2>
+
+                <div class="row">
+                  <div class="col-lg-5 col-m-6 col-sm-6">
+                    <div class="form-group">
+                      <label class="label-key mt-2">{{
+                        "First Name" | translate
+                      }}</label>
+                      <input
+                        type="text"
+                        class="form-control input-value"
+                        name="FirstName"
+                        formControlName="FirstName"
+                        required
+                      />
+                      <div
+                        *ngIf="
+                          Form4.get('FirstName')?.touched &&
+                          Form4.get('FirstName')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form4.get('FirstName')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-key mt-2">{{
+                        "Last Name" | translate
+                      }}</label>
+                      <input
+                        type="text"
+                        class="form-control input-value"
+                        name="lastName"
+                        formControlName="lastName"
+                        required
+                      />
+                      <div
+                        *ngIf="
+                          Form4.get('lastName')?.touched &&
+                          Form4.get('lastName')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form4.get('lastName')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-key mt-2">{{
+                        "phone Number" | translate
+                      }}</label>
+                      <input
+                        type="text"
+                        class="form-control input-value"
+                        name="phoneNumber"
+                        formControlName="phoneNumber"
+                        required
+                      />
+                      <div
+                        *ngIf="
+                          Form4.get('phoneNumber')?.touched &&
+                          Form4.get('phoneNumber')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form4.get('phoneNumber')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group" *ngIf="id == null">
+                      <label>{{ "Pin Code" | translate }} *</label>
+                      <input
+                        class="form-control input-value"
+                        type="text"
+                        name="pinCode"
+                        formControlName="pinCode"
+                        required
+                      />
+                      <div
+                        *ngIf="
+                          Form4.get('pinCode')?.touched &&
+                          Form4.get('pinCode')?.errors
+                        "
+                      >
+                        <div *ngIf="Form4.get('pinCode')?.errors?.['required']">
+                          <span class="text-danger">
+                            {{ "this field is required" | translate }}
+                          </span>
+                        </div>
+                        <div>
+                          <span
+                            class="text-danger"
+                            *ngIf="Form4.get('pinCode')?.errors?.['minlength']"
+                          >
+                            {{ "minlength is 6 character" | translate }}
+                          </span>
+                        </div>
+                        <div>
+                          <span
+                            class="text-danger"
+                            *ngIf="Form4.get('pinCode')?.errors?.['maxlength']"
+                          >
+                            {{ "maxlength is 6 character" | translate }}
+                          </span>
+                        </div>
+                        <div *ngIf="Form4.get('pinCode')?.errors?.['pattern']">
+                          <span class="text-danger">
+                            {{
+                              "Please Enter Numbers Only From 0 to 9"
+                                | translate
+                            }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-m-6 col-sm-6">
+                    <div class="form-group">
+                      <label class="label-key mt-2">{{
+                        "Email" | translate
+                      }}</label>
+                      <input
+                        type="email"
+                        class="form-control input-value"
+                        name="email"
+                        formControlName="email"
+                        required
+                      />
+                      <div
+                        *ngIf="
+                          Form4.get('email')?.touched &&
+                          Form4.get('email')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form4.get('email')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-key mt-2">{{
+                        "User Name" | translate
+                      }}</label>
+                      <input
+                        type="text"
+                        class="form-control input-value"
+                        name="userName"
+                        formControlName="userName"
+                        required
+                      />
+                      <div
+                        *ngIf="
+                          Form4.get('userName')?.touched &&
+                          Form4.get('userName')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form4.get('userName')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="label-key mt-2">{{
+                        "Password" | translate
+                      }}</label>
+                      <input
+                        type="text"
+                        class="form-control input-value"
+                        name="password"
+                        formControlName="Password"
+                        required
+                      />
+                      <div
+                        *ngIf="
+                          Form4.get('Password')?.touched &&
+                          Form4.get('Password')?.errors
+                        "
+                      >
+                        <div>
+                          <mat-error
+                            *ngIf="Form4.get('Password')?.errors?.['required']"
+                          >
+                            {{ "this field is required" | translate }}
+                          </mat-error>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="main-manager-btn">
+                      <button
+                        class="btn-gred-create btn-gred"
+                        [disabled]="Form4.invalid"
+                        (click)="CreateManager()"
+                      >
+                        {{ "Create" | translate }}
+                      </button>
+                      <button class="btn-gred-cancel" (click)="cancel()">
+                        {{ "Cancel" | translate }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="foot-stepper">
+                <button
+                  matStepperPrevious
+                  class="btn-gred2 position-absolute prevbtn"
+                  #prevbtn3
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 8H1M1 8L8 15M1 8L8 1"
+                      stroke="#40A5A6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  matStepperNext
+                  class="btn-gred position-absolute nxtbtn2"
+                  #nextBtn4
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 8H15M15 8L8 1M15 8L8 15"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="Form5">
+            <form [formGroup]="Form5">
+              <h2 class="company-header">
+                {{ "Add license Period" | translate }}
+              </h2>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div appearance="fill">
+                    <p>{{ "Start Date" | translate }}</p>
+                    <mat-card class="demo-inline-calendar-card">
+                      <mat-calendar
+                        [(selected)]="startDate"
+                        (selectedChange)="onSelectDate($event)"
+                        [maxDate]="maxDate"
+                      ></mat-calendar>
+                    </mat-card>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div appearance="fill">
+                    <p>{{ "End Date" | translate }}</p>
+
+                    <mat-card class="demo-inline-calendar-card">
+                      <mat-calendar
+                        [(selected)]="endDate"
+                        (selectedChange)="onSelectDate($event)"
+                        [minDate]="maxDate"
+                      ></mat-calendar>
+                    </mat-card>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <h3 class="toggle-header">
+                      {{ "OR Choose a specific period" | translate }}
+                    </h3>
+                    <mat-button-toggle-group
+                      name="fontStyle"
+                      aria-label="Font Style"
+                      formControlName="numberOfLicenseYears"
+                      (change)="numberOfLicenseYearsSelect($event)"
+                      style="width: 117%"
+                    >
+                      <mat-button-toggle value="1" name="dateRange">{{
+                        "1 Year" | translate
+                      }}</mat-button-toggle>
+                      <mat-button-toggle value="2" name="dateRange">{{
+                        "2 Year" | translate
+                      }}</mat-button-toggle>
+                      <mat-button-toggle value="3" name="dateRange">{{
+                        "3 Year" | translate
+                      }}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                  </div>
+                </div>
+                <div class="foot-stepper">
+                  <button
+                    matStepperPrevious
+                    class="btn-gred2 position-absolute btnprev-end"
+                    #prevbtn4
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15 8H1M1 8L8 15M1 8L8 1"
+                        stroke="#40A5A6"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="btn-gred position-absolute btn-gred-submit"
+                    (click)="submit()"
+                    [disabled]="Form5.invalid"
+                  >
+                    {{ "Create New Company" | translate }}
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 8H15M15 8L8 1M15 8L8 15"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <!-- <div class="main-manager-btn">
+                  <button matStepperPrevious class="btn-gred2" #prevbtn4>
+                    <mat-icon [ngStyle]="{ color: '#40A5A6' }">arrow_back</mat-icon>
+                  </button>
+                  <button
+                    class="btn-gred"
+                    (click)="submit()"
+                    [disabled]="Form5.invalid"
+                  >
+                    Submit
+                  </button>
+                </div> -->
+              </div>
+            </form>
+          </mat-step>
+        </mat-stepper>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="default"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">{{ "Please Wait." | translate }}</p>
+</ngx-spinner> -->

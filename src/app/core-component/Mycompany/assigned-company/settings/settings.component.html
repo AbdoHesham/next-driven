@@ -1,0 +1,258 @@
+ 
+<div class="page-header">
+    <div class="page-title">
+     
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link inactive" aria-current="page"[routerLink]="routes.companyInformation" >{{ "Information" | translate }}</a>
+           
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active "  [routerLink]="routes.setting">{{ "Settings" | translate }}</a>
+          </li>
+      </ul>
+    
+    </div>
+    <div class="page-btn">
+      <a [routerLink]="routes.editSetting" class="btn btn-added"
+        ><img src="assets/img/icons/plus.svg" alt="img" class="me-2" />{{ "Edit Settings" | translate }}</a
+      >
+    </div>
+  </div>
+  <!-- /add -->
+  <div class="card">
+    <div class="card-body">
+        <form [formGroup]="Form">
+            <div class="row">
+             
+                
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{ "Start Hour" | translate }}</label>
+                        <input type="text"
+                        name="startHour"
+                        formControlName="startHour"
+                        readonly
+                        >
+                        
+                   </div>
+                </div>
+                  
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{ "End Hour" | translate }}</label>
+                        <input type="text"
+                        name="endHour"
+                        formControlName="endHour"
+                        readonly
+                        >
+                        
+                   </div>
+                </div>
+               
+               
+                
+               
+                <div class="col-lg-4 col-sm-6 col-12">
+                      
+                  <div class="custom-toggle">
+                      <input
+                        
+                        type="checkbox"
+                        name="isMidnightShift"
+                      formControlName="isMidnightShift"
+                      style="pointer-events: none !important"
+                      />
+                      <label class="custom-label" for="flexSwitchCheckDefault">{{
+                        "Midnight Shift" | translate
+                      }}</label>
+                     
+                    </div>
+              
+          </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                            
+                    <div class="custom-toggle">
+                        <input
+                        
+                        type="checkbox"
+                        name="isShowMenu"
+                        formControlName="isShowMenu"
+                        style="pointer-events: none !important"
+                        />
+                        <label class="custom-label" for="flexSwitchCheckDefault">{{
+                        "Show Menu" | translate
+                        }}</label>
+                    
+                    </div>
+                
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{ "Printer Layout" | translate }}</label>
+                        <input type="text"
+                        name="printerLayout"
+                        formControlName="printerLayout"
+                        readonly
+                        >
+                        
+                   </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                            
+                    <div class="custom-toggle">
+                        <input
+                        
+                        type="checkbox"
+                        name="isDefaultBarcode"
+                        formControlName="isDefaultBarcode"
+                        readonly
+                        style="pointer-events: none !important"
+                        />
+                        <label class="custom-label" for="flexSwitchCheckDefault">{{
+                        "Default Barcode" | translate
+                        }}</label>
+                    
+                    </div>
+                
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                            
+                    <div class="custom-toggle">
+                        <input
+                        
+                        type="checkbox"
+                        name="isServerConnection"
+                      formControlName="isServerConnection"
+                      readonly
+                      style="pointer-events: none !important"
+                        />
+                        <label class="custom-label" for="flexSwitchCheckDefault">{{
+                            "Server Connection" | translate
+                          }}</label>
+      
+                          <p class="custom-label2">
+                            {{ "Uncheck offline Localhost." | translate }}
+                          </p>
+                    
+                    </div>
+                
+                </div>
+             
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>
+                            {{ "Total No of Digits" | translate }}
+                          </label>
+                        <input type="text" 
+                        name="totalNoOfDigits"
+                        formControlName="totalNoOfDigits"
+                        readonly>
+                       
+                    </div>
+                   
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{ "PLU Starting Position" | translate }}</label>
+                        <input type="text" 
+                        name="pluStartingPosition"
+                    formControlName="pluStartingPosition"
+                    readonly>
+                        
+                    </div>
+                   
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{ "Price Starting Position" | translate }}</label>
+                        <input type="text" 
+                        name="priceStartingPosition"
+                        formControlName="priceStartingPosition"
+                        readonly>
+                        
+                    </div>
+                   
+                </div>
+               
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{ "Prefix" | translate }}</label>
+                        <input type="text"
+                        name="prefix"
+                        formControlName="prefix"
+                        readonly
+                        >
+                        
+                   </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label>{{ "No of Digits in PLU" | translate }}</label>
+                        <input type="text"
+                        name="noOfDigitsInPLU"
+                        formControlName="noOfDigitsInPLU"
+                        readonly
+                        >
+                        
+                   </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                  <div class="form-group">
+                      <label> {{ "No of Digits in Price" | translate }}</label>
+                      <input type="text"
+                      name="noOfDigitsInPrice"
+                    formControlName="noOfDigitsInPrice"
+                    readonly
+                      >
+                      
+                 </div>
+              </div>
+               
+            <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                    <label >
+                      {{ "Top Inch" | translate }}
+                    </label>
+                    <input
+                      type="text"
+                     
+                      name="topInch"
+                      formControlName="topInch"
+                      readonly
+                     
+                    />
+                  </div>
+                 
+            </div>
+            <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                    <label >
+                      {{ "Bottom Inch" | translate }}
+                    </label>
+                    <input
+                      type="text"
+                      
+                      name="bottomInch"
+                      formControlName="bottomInch"
+                      readonly
+                      
+                    />
+                  </div>
+        
+            </div>
+  
+                
+  
+               
+  
+               
+               
+            </div>
+        </form>
+      
+    </div>
+  </div>
+  <!-- /add -->
+  
+     

@@ -1,0 +1,484 @@
+<div [dir]="SharedService.dir() == 'en' ? 'ltr' : 'rtl'">
+  <div class="row user-containt" >
+    <div class="col-lg-12 position-relative user-create bg-white">
+      <div class="container bg-white">
+        <h2 class="header position-absolute">
+          {{ "Create New User" | translate }}
+        </h2>
+        <mat-stepper [linear]="false" #stepper class="custom-stepper2">
+          <mat-step [stepControl]="Form" >
+            <h2 class="userInfo">{{ "User Information" | translate }}</h2>
+            <form [formGroup]="Form">
+              <div class="row">
+                <div class="col-lg-5 mr-4">
+                  <div class="form-group">
+                    <label class="label-key mt-2">
+                      {{ "First Name" | translate }}
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control input-value"
+                      name="firstName"
+                      formControlName="firstName"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        Form.get('firstName')?.touched &&
+                        Form.get('firstName')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('firstName')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('firstName')?.errors?.['minlength']"
+                        >
+                          {{ "minlength is 3 character" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('firstName')?.errors?.['maxlength']"
+                        >
+                          {{ "maxlength is 50 character" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('firstName')?.errors?.['pattern']"
+                        >
+                          {{ "Enter characters only" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="label-key mt-2">{{
+                      "Last Name" | translate
+                    }}</label>
+                    <input
+                      type="text"
+                      class="form-control input-value"
+                      name="lastName"
+                      formControlName="lastName"
+                      required
+                    />
+  
+                    <div
+                      *ngIf="
+                        Form.get('lastName')?.touched &&
+                        Form.get('lastName')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('lastName')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('lastName')?.errors?.['minlength']"
+                        >
+                          {{ "minlength is 3 character" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('lastName')?.errors?.['maxlength']"
+                        >
+                          {{ "maxlength is 50 character" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('lastName')?.errors?.['pattern']"
+                        >
+                          {{ "Enter characters only" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label class="label-key mt-2">{{
+                      "Phone Number" | translate
+                    }}</label>
+                    <input
+                      type="tel"
+                      class="form-control input-value"
+                      name="phoneNumber"
+                      formControlName="phoneNumber"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        Form.get('phoneNumber')?.touched &&
+                        Form.get('phoneNumber')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('phoneNumber')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label class="label-key mt-2">
+                      {{ "Email" | translate }}
+                    </label>
+                    <input
+                      type="email"
+                      class="form-control input-value"
+                      name="Email"
+                      formControlName="Email"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        Form.get('Email')?.touched && Form.get('Email')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('Email')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error *ngIf="Form.get('Email')?.errors?.['email']">
+                          {{ "please enter valid email" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="form-group">
+                    <label class="label-key mt-2">
+                      {{ "Default Printer" | translate }}
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control input-value"
+                      name="defaultPrinter"
+                      formControlName="defaultPrinter"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        Form.get('defaultPrinter')?.touched &&
+                        Form.get('defaultPrinter')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('defaultPrinter')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="label-key mt-2">
+                      {{ "Kitchen Printer" | translate }}
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control input-value"
+                      name="kitchenPrinter"
+                      formControlName="kitchenPrinter"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        Form.get('kitchenPrinter')?.touched &&
+                        Form.get('kitchenPrinter')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('kitchenPrinter')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="label-key mt-2">{{
+                      "Pin Code" | translate
+                    }}</label>
+                    <input
+                      class="form-control input-value"
+                      type="text"
+                      name="pinCode"
+                      formControlName="pinCode"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        Form.get('pinCode')?.touched &&
+                        Form.get('pinCode')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('pinCode')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('pinCode')?.errors?.['minLength']"
+                        >
+                          {{ "Min Length Is 6 Digits" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('pinCode')?.errors?.['maxLength']"
+                        >
+                        {{ "Max Length Is 6 Digits" | translate }}
+                      </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('pinCode')?.errors?.['pattern']"
+                        >
+                          {{ "Please Enter Numbers Only From 0 to 9" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="label-key mt-2">{{
+                      "User Name" | translate
+                    }}</label>
+                    <input
+                      class="form-control input-value"
+                      type="text"
+                      name="userName"
+                      formControlName="userName"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        Form.get('userName')?.touched &&
+                        Form.get('userName')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('userName')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="label-key mt-2">{{
+                      "Password" | translate
+                    }}</label>
+                    <div class="inp p-relative">
+
+                      <input
+                        class="form-control input-value"
+                        name="Password"
+                        formControlName="Password"
+                        required
+                        [type]="showPass ? 'text' : 'password'"
+
+                      />
+                      <img [src]=" showPass ? '../../../../assets/img/icons/eye-not.png' : '../../../../assets/img/icons/eye.png'"           (click)="showPass = !showPass"
+                      style="cursor: pointer; background-size: cover"
+                      class="eye-in-create-user" >
+                    </div>
+                    <div
+                      *ngIf="
+                        Form.get('Password')?.touched &&
+                        Form.get('Password')?.errors
+                      "
+                    >
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('Password')?.errors?.['required']"
+                        >
+                          {{ "this field is required" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('Password')?.errors?.['minlength']"
+                        >
+                          {{ "minlength is 8 character" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('Password')?.errors?.['maxlength']"
+                        >
+                          {{ "maxlength is 50 character" | translate }}
+                        </mat-error>
+                      </div>
+                      <div>
+                        <mat-error
+                          *ngIf="Form.get('Password')?.errors?.['pattern']"
+                        >
+                          {{ "Password Should Complex Pattern" | translate }}
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-5 mt-3 d-flex">
+                  <p class="assign-role">{{ "Assign User Role" | translate }}</p>
+                  <div class="form-group">
+
+                    <div
+                      class="form-check form-check-inline"
+                      *ngFor="let role of altRoles"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="assignrole"
+                        [id]="role.id"
+                        formControlName="assignrole"
+                        class="checkbox-field"
+                        [value]="role.id"
+                      />
+                      <label
+                        class="form-check-label checkbox-label"
+                        [for]="role.id"
+                        >{{ role.name }}</label
+                      >
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+  
+              <div class="foot-stepper">
+                <button
+                  matStepperNext
+                  class="btn-gred position-absolute nxtbtn"
+                  #nextBtn
+                  [disabled]="Form.invalid"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 8H15M15 8L8 1M15 8L8 15"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+  
+          <mat-step [stepControl]="Form2" >
+            <form [formGroup]="Form2" style="height:100%;">
+              <div class="row" *ngIf="!show">
+                <h2 class="user-header">Assign Company</h2>
+              </div>
+              <div class="row">
+                <div
+                  class="col-lg-6"
+                  *ngIf="!show && altCompaniesForDDL?.length > 0"
+                >
+                  <mat-form-field appearance="fill" style="width: 100%">
+                    <mat-label>{{ "Select Company" | translate }}</mat-label>
+                    <mat-select disableRipple formControlName="companyID">
+                      <mat-option
+                        *ngFor="let company of altCompaniesForDDL"
+                        [value]="company.id"
+                        >{{ company.name }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                  <!-- <select class="form-select" formControlName="companyID">
+                    <option *ngFor="let company of altCompaniesForDDL" [value]="company.id" >{{company.name}}</option>
+                  </select> -->
+                </div>
+                <div class="col-lg-5 d-flex" *ngIf="!show">
+                  <span
+                    class="company-manager"
+                    *ngIf="altCompaniesForDDL?.length < 1"
+                    >We haven't added any company yet.</span
+                  >
+                  <span>
+                    <a
+                      class="company-link"
+                      (click)="toggle()"
+                      *ngIf="!show"
+                      [routerLink]="['/master-admin/users/create/null']"
+                    >
+                      Create New Company</a
+                    ></span
+                  >
+                </div>
+              </div>
+              <div *ngIf="show">
+                <app-create-sepling-company (companyCreated)="companyCreated($event)"></app-create-sepling-company>
+  
+                <!-- <h2 class=" header "> {{"Create New Company"|translate}} </h2> -->
+              </div>
+  
+              <div class="foot-stepper flex-sec" style="background: #f7f7f7">
+                <button matStepperPrevious class="btn-gred2 prevbtn" #prevbtn>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 8H1M1 8L8 15M1 8L8 1"
+                      stroke="#40A5A6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="btn-gred nxtbtn2"
+                  (click)="CreateUserWithAssignCompany()"
+                >
+                  {{ "Create" }}
+                </button>
+              </div>
+            </form>
+          </mat-step>
+        </mat-stepper>
+      </div>
+    </div>
+  </div>
+</div>
+

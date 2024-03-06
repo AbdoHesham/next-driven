@@ -1,0 +1,17 @@
+<div class="p-3">
+  <mat-dialog-content>
+    <div class="text-center">
+      <img src="assets/img/Frame 4002.png" alt="" srcset="" />
+
+      <p style="margin-block: 32px">
+        {{ "You are spent more than 5 minutes inactive." | translate }}
+      </p>
+      <p style="margin-block: 32px">{{ "Please reLogin." | translate }}</p>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions style="margin-bottom: 20px;">
+    <button mat-dialog-close class="btn btn-login" (click)="goToLogin()">
+      {{ "Ok" | translate }}
+    </button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,364 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>{{ "People Add Customer" | translate }}</h4>
+    <h6>{{ "Create new Customer" | translate }}</h6>
+  </div>
+</div>
+<!-- /add -->
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="Form">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "First Name" | translate }}*</label>
+            <input
+              type="text"
+              name="FirstName"
+              formControlName="FirstName"
+              required
+            />
+            <div
+              *ngIf="
+                Form.get('FirstName')?.touched && Form.get('FirstName')?.errors
+              "
+            >
+              <div *ngIf="Form.get('FirstName')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+              <div *ngIf="Form.get('FirstName')?.errors?.['minlength']">
+                <span class="text-danger">
+                  {{ "minlength is 3 character" | translate }}
+                </span>
+              </div>
+              <div *ngIf="Form.get('FirstName')?.errors?.['maxlength']">
+                <span class="text-danger">
+                  {{ "maxlength is 50 character" | translate }}
+                </span>
+              </div>
+              <div *ngIf="Form.get('FirstName')?.errors?.['pattern']">
+                <span class="text-danger">
+                  {{ "Enter characters only" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Last Name" | translate }}*</label>
+            <input
+              type="text"
+              name="LastName"
+              formControlName="LastName"
+              required
+            />
+            <div
+              *ngIf="
+                Form.get('LastName')?.touched && Form.get('LastName')?.errors
+              "
+            >
+              <div *ngIf="Form.get('LastName')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+              <div *ngIf="Form.get('LastName')?.errors?.['minlength']">
+                <span class="text-danger">
+                  {{ "minlength is 3 character" | translate }}
+                </span>
+              </div>
+              <div *ngIf="Form.get('LastName')?.errors?.['maxlength']">
+                <span class="text-danger">
+                  {{ "maxlength is 50 character" | translate }}
+                </span>
+              </div>
+              <div *ngIf="Form.get('LastName')?.errors?.['pattern']">
+                <span class="text-danger">
+                  {{ "Enter characters only" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Email" | translate }}*</label>
+            <input
+              type="email"
+              class="form-control"
+              name="Email"
+              formControlName="Email"
+              required
+            />
+            <div
+              *ngIf="Form.get('Email')?.touched && Form.get('Email')?.errors"
+            >
+              <div *ngIf="Form.get('Email')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "VAT Number" | translate }}*</label>
+            <input type="text" name="VATNumber" formControlName="VATNumber" />
+            <div
+              *ngIf="
+                Form.get('VATNumber')?.touched && Form.get('VATNumber')?.errors
+              "
+            >
+              <div *ngIf="Form.get('VATNumber')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Reward balance" | translate }}*</label>
+            <input
+              type="text"
+              name="Rewardbalance"
+              formControlName="Rewardbalance"
+            />
+            <div
+              *ngIf="
+                Form.get('Rewardbalance')?.touched &&
+                Form.get('Rewardbalance')?.errors
+              "
+            >
+              <div *ngIf="Form.get('Rewardbalance')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Country" | translate }} *</label>
+            <select
+              class="form-select custom-select"
+              id="selectCountry"
+              formControlName="Country"
+            >
+              <option
+                *ngFor="let country of countries"
+                [value]="country.id"
+                class="custom-option"
+              >
+                {{ country.name }}
+              </option>
+            </select>
+            <div
+              *ngIf="
+                Form.get('Country')?.touched && Form.get('Country')?.errors
+              "
+            >
+              <div *ngIf="Form.get('Country')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "City" | translate }} *</label>
+            <select class="form-select" id="selectCity" formControlName="City">
+              <option
+                *ngFor="let city of cities"
+                [value]="city.id"
+                class="custom-option"
+              >
+                {{ city.name }}
+              </option>
+            </select>
+            <div *ngIf="Form.get('City')?.touched && Form.get('City')?.errors">
+              <div *ngIf="Form.get('City')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label> {{ "Street" | translate }} * </label>
+            <input
+              type="text"
+              name="Street"
+              formControlName="Street"
+              required
+            />
+            <div
+              *ngIf="Form.get('Street')?.touched && Form.get('Street')?.errors"
+            >
+              <div *ngIf="Form.get('Street')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Building Number" | translate }}*</label>
+            <input
+              type="text"
+              name="BuildingNumber"
+              formControlName="BuildingNumber"
+              required
+            />
+            <div
+              *ngIf="
+                Form.get('BuildingNumber')?.touched &&
+                Form.get('BuildingNumber')?.errors
+              "
+            >
+              <div *ngIf="Form.get('BuildingNumber')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Postal Code" | translate }}*</label>
+            <input
+              type="text"
+              name="PostalCode"
+              formControlName="PostalCode"
+              required
+            />
+            <div
+              *ngIf="
+                Form.get('PostalCode')?.touched &&
+                Form.get('PostalCode')?.errors
+              "
+            >
+              <div *ngIf="Form.get('PostalCode')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "District" | translate }} *</label>
+            <select
+              class="form-select"
+              id="selectDistrict"
+              formControlName="District"
+            >
+              <option
+                *ngFor="let district of districts"
+                [value]="district.id"
+                class="custom-option"
+              >
+                {{ district.name }}
+              </option>
+            </select>
+            <div
+              *ngIf="
+                Form.get('District')?.touched && Form.get('District')?.errors
+              "
+            >
+              <div *ngIf="Form.get('District')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Customer Phone Number" | translate }}*</label>
+            <input
+              type="text"
+              name="masterPhone"
+              formControlName="masterPhone"
+              required
+            />
+            <div
+              *ngIf="
+                Form.get('masterPhone')?.touched &&
+                Form.get('masterPhone')?.errors
+              "
+            >
+              <div *ngIf="Form.get('masterPhone')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+              <div *ngIf="Form.get('masterPhone')?.errors?.['pattern']">
+                <span>
+                  {{ "Enter Digits only" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Customer Mobile Number" | translate }}*</label>
+            <input
+              type="text"
+              name="masterMobile"
+              formControlName="masterMobile"
+              required
+            />
+            <div
+              *ngIf="
+                Form.get('masterMobile')?.touched &&
+                Form.get('masterMobile')?.errors
+              "
+            >
+              <div *ngIf="Form.get('masterMobile')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+              <div *ngIf="Form.get('masterMobile')?.errors?.['pattern']">
+                <span>
+                  {{ "Enter Digits only" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <button
+          (click)="submit()"
+          [disabled]="Form.invalid"
+            class="btn btn-submit me-2"
+          >
+            {{ "Submit" | translate }}
+          </button>
+          <a [routerLink]="routes.customerList" class="btn btn-cancel">{{
+            "Cancel" | translate
+          }}</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- /add -->

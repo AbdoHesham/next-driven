@@ -1,0 +1,63 @@
+<div class="account-content">
+  <div class="login-wrapper">
+    <div class="login-content">
+      <div class="login-userset">
+        <div class="login-logo logo-normal">
+          <img src="assets/img/logo.png" alt="img" />
+        </div>
+        <div class="login-userheading">
+          <h3>{{ "Welcome To POS, Login now!" | translate }}</h3>
+        </div>
+        <div class="code">
+          <form [formGroup]="Form">
+            <div
+              formArrayName="digits"
+              style="display: flex; justify-content: center"
+            >
+              <input
+                *ngFor="let field of addDynamicElement.controls; let i = index"
+                type="password"
+                #inputs
+                maxLength="1"
+                [formControlName]="i"
+                (keydown)="check(i, field, $event)"
+                autofocus
+              />
+            </div>
+            <div class="btn-group">
+              <button mat-button (click)="btnClick(1)">1</button
+              ><button mat-button (click)="btnClick(2)">2</button
+              ><button mat-button (click)="btnClick(3)">3</button
+              ><button mat-button (click)="btnClick(4)">4</button
+              ><button mat-button (click)="btnClick(5)">5</button
+              ><button mat-button (click)="btnClick(6)">6</button
+              ><button mat-button (click)="btnClick(7)">7</button
+              ><button mat-button (click)="btnClick(8)">8</button
+              ><button mat-button (click)="btnClick(9)">9</button
+              ><button mat-button (click)="resetCodeInput()">C</button
+              ><button mat-button (click)="btnClick(0)">0</button>
+              <!-- <button mat-button (click)="removeLastIndexInCode()"><img  src="assets/img/icons/delete.svg" alt="" srcset=""></button> -->
+            </div>
+ 
+          </form>
+        </div>
+        <div class="form-login">
+          <button
+            (click)="login()"
+            [disabled]="Form.invalid"
+            class="btn btn-login"
+          >
+            {{ "login" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="login-img">
+      <img
+        src="assets/img/pos-login.png"
+        alt="img"
+        style="height: 74vh; width: 100%"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,417 @@
+<div class="bg-custom-white pr-3 mb-3">
+  <div class="p-3 table-head">
+    <div
+      style="overflow-x: auto"
+      class="first-sec"
+      *ngIf="filteredData?.length > 0"
+    >
+      <div class="title-head-text">
+        <h2>{{ "Users List" | translate }}</h2>
+      </div>
+      <div class="title-head-actions">
+        <button
+          class="btn-gred mx-3"
+          [disabled]="filteredData?.length < 1"
+          matTooltip="{{ 'Export All Data' | translate }}"
+          (click)="exportToExcel()"
+        >
+          <mat-icon>upload </mat-icon>
+          <span class="d-none d-md-block">
+            {{ "Export All Data" | translate }}
+          </span>
+        </button>
+        <button
+          class="btn-gred"
+          matTooltip="{{ 'Create New User' | translate }}"
+          (click)="goToCreate()"
+        >
+          <mat-icon> add_circle </mat-icon>
+          <span class="d-none d-md-block">
+            {{ "Create New User" | translate }}
+          </span>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="filteredData?.length > 0">
+      <div class="second-sec bg-custom-grey">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <mat-form-field class="p-relative">
+                  <mat-label>{{ "Search By User Name" | translate }}</mat-label>
+                  <mat-select
+                    matNativeControl
+                    [formControl]="bankFilterCtrl"
+                    placeholder="company"
+                  >
+                    <mat-option>
+                      <ngx-mat-select-search
+                        [formControl]="bankCtrl"
+                        [placeholderLabel]="'search ...' | translate"
+                        [noEntriesFoundLabel]="'no search result' | translate"
+                        (keyup)="searchBCompany($event)"
+                      ></ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option
+                      *ngFor="let company of altCompaniesForDDL"
+                      [value]="company.userName"
+                      (onSelectionChange)="onSelectCompany(company)"
+                    >
+                      {{ company.userName }}
+                    </mat-option>
+                  </mat-select>
+                  <img
+                    style="position: absolute; top: 5px; left: -24px"
+                    src="../../../../../assets/img/icons/search.png"
+                    alt="search"
+                  />
+                </mat-form-field>
+              </div>
+              <div
+                class="col-lg-6 col-md-6"
+                style="display: flex; align-items: center"
+              >
+                <mat-form-field class="p-relative">
+                  <mat-label>{{ "View By Role" | translate }}</mat-label>
+                  <mat-select [formControl]="roleFilterCtrl" placeholder="Role">
+                    <mat-option>
+                      <ngx-mat-select-search
+                        [formControl]="roleCtrl"
+                        [placeholderLabel]="'search ...' | translate"
+                        [noEntriesFoundLabel]="'no search result' | translate"
+                        (keyup)="searchRole($event)"
+                      ></ngx-mat-select-search>
+                    </mat-option>
+
+                    <mat-option
+                      *ngFor="let role of altRolesForDDL"
+                      [value]="role.id"
+                      (onSelectionChange)="onSelectRole(role)"
+                    >
+                      All {{ role.name }}
+                    </mat-option>
+                  </mat-select>
+                  <img
+                    style="position: absolute; top: 5px; left: -24px"
+                    src="../../../../../assets/img/icons/search.png"
+                    alt="search"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <button
+              class="btn-white-outline btn-sm-block"
+              style="width: auto; float: right"
+            >
+              {{ "Search" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table
+    *ngIf="filteredData?.length > 0"
+    mat-table
+    [dataSource]="filteredData"
+    class="mat-elevation-z8"
+  >
+    <ng-container *ngFor="let column of columns">
+      <ng-container
+        *ngIf="column.type === 'text'"
+        [matColumnDef]="column.property"
+      >
+        <th
+          *matHeaderCellDef
+          class="uppercase"
+          mat-header-cell
+          matTooltip="{{ column.label | translate }}"
+        >
+          {{ column.label | translate }}
+        </th>
+        <td *matCellDef="let row" mat-cell class="p-relative">
+          {{ row[column.property] == null ? "N/A" : row[column.property] }}
+        </td>
+      </ng-container>
+    </ng-container>
+    <!--array2  -->
+    <ng-container *ngFor="let column of columns">
+      <ng-container
+        *ngIf="column.type === 'array2'"
+        [matColumnDef]="column.property"
+      >
+        <th
+          *matHeaderCellDef
+          class="uppercase"
+          mat-header-cell
+          matTooltip="{{ column.label | translate }}"
+        >
+          {{ column.label | translate }}
+        </th>
+
+        <td *matCellDef="let row" mat-cell>
+          <div style="display: flex; align-items: center">
+            <div>
+              <!-- class="example-margin" -->
+              <!--                   [dir]="SharedService.dir() == 'ar' ? 'rtl' : 'ltr'"
+     -->
+              <mat-slide-toggle
+                color="primary"
+                [checked]="row.accountStatus == 1 ? true : false"
+                (change)="toggleActiveCompanies($event, row)"
+              >
+              </mat-slide-toggle>
+            </div>
+            <div style="margin-inline: 30px">
+              <!-- createCompanyImgPath(row?.logo) -->
+              <img
+                [src]="
+                  !row.logo ? '../../../../assets/img/avatar.png' : row.logo
+                "
+                onerror="this.src='../../../../assets/img/avatar.png'"
+                width="48"
+                height="48"
+              />
+            </div>
+            <div>
+              <p>
+                {{
+                  row[column.property] == null ? "N/A" : row[column.property]
+                }}
+              </p>
+              <p>
+                <mat-hint>
+                  {{ row.fullName.slice(0, 10) }} . {{ row.phoneNumber }}
+                </mat-hint>
+              </p>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+    </ng-container>
+    <!--array2=3  -->
+
+    <ng-container *ngFor="let column of columns">
+      <ng-container
+        *ngIf="column.type === 'array3'"
+        [matColumnDef]="column.property"
+      >
+        <th
+          *matHeaderCellDef
+          class="uppercase"
+          mat-header-cell
+          matTooltip="{{ column.label | translate }}"
+        >
+          {{ column.label | translate }}
+        </th>
+        <td *matCellDef="let row; let i = index" mat-cell class="p-relative">
+          {{ row[column.property] == null ? "N/A" : row[column.property] }}
+
+          <span>
+            <img
+              src="../../../../../assets/img/icons/fi_edit-3.png"
+              alt="edit icon"
+              class="c-pointer"
+              (click)="toggleVatType(i, row)"
+            />
+            <span class="custom-dropdown" *ngIf="companyIndex == i && showDDL">
+              <div class="form-group">
+                <div
+                  class="form-check form-check-inline"
+                  style="padding-block: 10px"
+                  *ngFor="let role of altRoles"
+                >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="assignrole"
+                    [id]="role.id"
+                    class="checkbox-field"
+                    [formControl]="assignrole"
+                    [value]="role.id"
+                    (blur)="showDDL = !showDDL"
+                    (change)="UpdateUserRole(row)"
+
+                  />
+                  <label
+                  (change)="UpdateUserRole(row)"
+                    class="form-check-label checkbox-label"
+                    [for]="role.id"
+                    >{{ role.name }}</label
+                  >
+                </div>
+              </div>
+            </span>
+          </span>
+        </td>
+      </ng-container>
+    </ng-container>
+    <!--array4  -->
+
+    <ng-container *ngFor="let column of columns">
+      <ng-container
+        *ngIf="column.type === 'array4'"
+        [matColumnDef]="column.property"
+      >
+        <th
+          *matHeaderCellDef
+          class="uppercase"
+          mat-header-cell
+          matTooltip="{{ column.label | translate }}"
+        >
+          {{ column.label | translate }}
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          {{ row[column.property] == null ? "N/A" : row[column.property] }}
+          <img
+            src="../../../../../assets/img/icons/fi_edit-3.png"
+            alt=""
+            class="c-pointer"
+            (click)="editAssignedManager(row)"
+          />
+        </td>
+      </ng-container>
+    </ng-container>
+
+    <!--array5  -->
+
+    <ng-container *ngFor="let column of columns">
+      <ng-container
+        *ngIf="column.type === 'array5'"
+        [matColumnDef]="column.property"
+      >
+        <th
+          *matHeaderCellDef
+          class="uppercase"
+          mat-header-cell
+          matTooltip="{{ column.label | translate }}"
+        >
+          {{ column.label | translate }}
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          {{
+            row[column.property] == null
+              ? "N/A"
+              : (row[column.property] | date : "longDate")
+          }}
+        </td>
+      </ng-container>
+    </ng-container>
+    <!--array6  -->
+
+    <ng-container *ngFor="let column of columns">
+      <ng-container
+        *ngIf="column.type === 'array6'"
+        [matColumnDef]="column.property"
+      >
+        <th
+          *matHeaderCellDef
+          class="uppercase"
+          mat-header-cell
+          matTooltip="{{ column.label | translate }}"
+        >
+          {{ column.label | translate }}
+        </th>
+        <td *matCellDef="let row" mat-cell>
+          <div
+            [ngClass]="[
+              row.accountStatus == 1 ? 'active-user' : 'diactive-user'
+            ]"
+          >
+            {{ row[column.property] == null ? "N/A" : row[column.property] }}
+          </div>
+        </td>
+      </ng-container>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>{{ "Actions" | translate }}</th>
+      <td mat-cell *matCellDef="let row">
+        <span (click)="viewDetails(row)" class="c-pointer">
+          <img
+            class="mx-1"
+            src="../../../../../assets/img/icons/eye.png"
+            matTooltip="{{ 'View Details' | translate }}"
+          />
+        </span>
+        <span (click)="update(row)" class="c-pointer"
+          ><img
+            class="mx-2"
+            src="../../../../../assets/img/icons/edit.png"
+            matTooltip="{{ 'Edit' | translate }}"
+        /></span>
+        <span (click)="delete(row)" class="c-pointer"
+          ><img
+            class="mx-1"
+            src="../../../../../assets/img/icons/trash.png"
+            matTooltip="{{ 'Delete' | translate }}"
+        /></span>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="visibleColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: visibleColumns"></tr>
+  </table>
+<!-- pagination -->
+  <!-- <div class="row justify-content-center" *ngIf="filteredData?.length > 0">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+ 
+        <li class="page-item">
+          <button
+            class="page-link prev-btn-pagination"
+            
+            aria-label="Previous"
+            (click)="prevPage()"
+            [disabled]="totalPageCount.length == 1"
+            >
+          <
+          </button>
+        </li>
+        <li class="page-item" style="display: contents">
+          <a
+            class="page-link text-black"
+            *ngFor="let item of totalPageCount"
+            (click)="callSpecificPage(item)"
+            [ngStyle]="{
+              'background-color':
+                item === currentPage ? '#D9EDED' : ''
+            }"
+            >{{ item }}</a
+          >
+        </li>
+
+        <li class="page-item">
+          <button class="page-link next-btn-pagination"  aria-label="Next" (click)="nextPage()" [disabled]="totalPageCount.length == 1">
+            >
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div> -->
+<!-- pagination -->
+
+  <div *ngIf="filteredData?.length < 1" class="empty-state-sec">
+    <app-empty-state></app-empty-state>
+
+    <p class="emp-title">
+      {{ "There are no created users" | translate }}
+    </p>
+    <p>{{ "When you are creating users," | translate }}</p>
+    <p>
+      {{ "you will find them here in the list of users." | translate }}
+    </p>
+    <button
+      class="btn-gred"
+      matTooltip="{{ 'Create New User' | translate }}"
+      (click)="goToCreate()"
+    >
+      <mat-icon> add_circle </mat-icon>
+      <span> {{ "Create New User" | translate }}</span>
+    </button>
+  </div>
+</div>

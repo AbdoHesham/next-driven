@@ -1,0 +1,333 @@
+<div class="page-header">
+    <div class="page-title">
+      <h4>{{ "Edit Company" | translate }}</h4>
+    </div>
+  </div>
+  
+  <!-- /add -->
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="Form">
+        <div class="row">
+          <!-- <div class="col-lg-12">
+                  <div class="form-group">
+                      
+                      <div class="image-upload">
+                          <input type="file"
+                          id="file-input"
+                          
+                            #file
+                        
+                         accept="image/*">
+                          <div class="image-uploads">
+                              <img src="assets/img/icons/upload.svg" alt="img">
+                             
+                               
+                          </div>
+                      </div>
+                  </div>
+              </div> -->
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>
+                {{ "Company Name - EN" | translate }}
+                *</label
+              >
+              <input
+                type="text"
+                name="companyNameEN"
+                formControlName="companyNameEN"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Company Name - AR" | translate }}*</label>
+              <input
+                type="text"
+                name="CompanyNameAR"
+                formControlName="CompanyNameAR"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div>
+              <label>{{ "VAT Type" | translate }}</label>
+            </div>
+  
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="Basic radio toggle button group"
+              style="width: 100%"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="btnradio1"
+                >Radio 1</label
+              >
+  
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="btnradio2"
+                >Radio 2</label
+              >
+  
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio3"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="btnradio3"
+                >Radio 3</label
+              >
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div>
+              <label>{{ "Company Type" | translate }}</label>
+            </div>
+  
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="Basic radio toggle button group"
+              style="width: 100%"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio02"
+                id="btnradio11"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-outline-primary" for="btnradio11"
+                >Radio 1</label
+              >
+  
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio02"
+                id="btnradio22"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="btnradio22"
+                >Radio 2</label
+              >
+  
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio02"
+                id="btnradio33"
+                autocomplete="off"
+              />
+              <label class="btn btn-outline-primary" for="btnradio33"
+                >Radio 3</label
+              >
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "VAT Number" | translate }}</label>
+              <input
+                type="number"
+                class="form-control"
+                name="VATNumber"
+                formControlName="VATNumber"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "VAT Percentage" | translate }}</label>
+              <input
+                type="text"
+                name="VATPercentage"
+                formControlName="VATPercentage"
+              />
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="custom-toggle">
+              <input
+                type="checkbox"
+                name="IsPriceIncludeVAT"
+                formControlName="IsPriceIncludeVAT"
+              />
+              <label class="custom-label" for="flexSwitchCheckDefault">{{
+                "Pricing type" | translate
+              }}</label>
+              <br />
+              <span class="custom-label2">{{
+                "pricing includes VAT." | translate
+              }}</span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Receipt notes" | translate }}*</label>
+              <input
+                type="text"
+                name="Receiptnotes"
+                formControlName="Receiptnotes"
+              />
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Country" | translate }} *</label>
+              <select
+                class="form-select custom-select"
+                id="selectCountry"
+                formControlName="Country"
+              >
+                <option
+                  *ngFor="let country of countries"
+                  [value]="country.id"
+                  class="custom-option"
+                >
+                  {{ country.name }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  Form.get('Country')?.touched && Form.get('Country')?.errors
+                "
+              >
+                <div *ngIf="Form.get('Country')?.errors?.['required']">
+                  <span class="text-danger">
+                    {{ "this field is required" | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "City" | translate }} *</label>
+              <select class="form-select" id="selectCity" formControlName="City">
+                <option
+                  *ngFor="let city of cities"
+                  [value]="city.id"
+                  class="custom-option"
+                >
+                  {{ city.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label> {{ "Street" | translate }} * </label>
+              <input type="text" name="Street" formControlName="Street" />
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Building Number" | translate }}</label>
+              <input
+                type="text"
+                name="BuildingNumber"
+                formControlName="BuildingNumber"
+              />
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Postal Code" | translate }}</label>
+              <input
+                type="text"
+                name="PostalCode"
+                formControlName="PostalCode"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "District" | translate }} *</label>
+              <select
+                class="form-select"
+                id="selectDistrict"
+                formControlName="District"
+              >
+                <option
+                  *ngFor="let district of districts"
+                  [value]="district.id"
+                  class="custom-option"
+                >
+                  {{ district.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Master Branch Phone Number" | translate }}*</label>
+              <input
+                type="text"
+                name="masterPhone"
+                formControlName="masterPhone"
+              />
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Master Branch Mobile Number" | translate }}*</label>
+              <input
+                type="text"
+                name="masterMobile"
+                formControlName="masterMobile"
+              />
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Contact Person" | translate }}*</label>
+              <input
+                type="text"
+                name="contactPerson"
+                formControlName="contactPerson"
+              />
+            </div>
+          </div>
+  
+          <div class="col-lg-12">
+            <button
+              [disabled]="Form.invalid"
+              (click)="submit()"
+              class="btn btn-submit me-2"
+            >
+              {{ "Submit" | translate }}
+            </button>
+            <a [routerLink]="routes.companyInformation" class="btn btn-cancel">{{
+              "Cancel" | translate
+            }}</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- /add -->
+  

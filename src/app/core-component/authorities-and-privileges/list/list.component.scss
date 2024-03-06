@@ -1,0 +1,13 @@
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0px !important;
+  }
+  .bg-custom-grey {
+    background-color: #fcfcfc;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    font-size: 12px;
+  }
+  // @import "/src/assets/theme/table-design.scss";
+  // @import "/src/assets/theme/toggle-style.scss";
+  

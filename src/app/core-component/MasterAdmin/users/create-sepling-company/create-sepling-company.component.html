@@ -1,0 +1,855 @@
+<h2 class=" header2 position-absolute"> {{"Create New Company"|translate}} </h2>
+<mat-stepper id="custom-stepper" [linear]="false" #stepper [dir]="SharedService.dir() == 'en' ? 'ltr' : 'rtl'" >
+               
+          
+  <!-- changed step icons -->
+  
+  <ng-template matStepperIcon="edit">
+    
+    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M0.289039 0.289039C0.674425 -0.0963465 1.29926 -0.0963465 1.68464 0.289039L6.9478 5.5522C7.33319 5.93758 7.33319 6.56242 6.9478 6.9478L1.68464 12.211C1.29926 12.5963 0.674425 12.5963 0.289039 12.211C-0.0963465 11.8256 -0.0963465 11.2007 0.289039 10.8154L4.85439 6.25L0.289039 1.68464C-0.0963465 1.29926 -0.0963465 0.674425 0.289039 0.289039Z" fill="#40A5A6"/>
+      </svg>
+      
+</ng-template>
+<ng-template matStepperIcon="done">
+  <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.289039 0.289039C0.674425 -0.0963465 1.29926 -0.0963465 1.68464 0.289039L6.9478 5.5522C7.33319 5.93758 7.33319 6.56242 6.9478 6.9478L1.68464 12.211C1.29926 12.5963 0.674425 12.5963 0.289039 12.211C-0.0963465 11.8256 -0.0963465 11.2007 0.289039 10.8154L4.85439 6.25L0.289039 1.68464C-0.0963465 1.29926 -0.0963465 0.674425 0.289039 0.289039Z" fill="#40A5A6"/>
+    </svg>
+    
+</ng-template>
+<ng-template matStepperIcon="check">
+  
+  <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.289039 0.289039C0.674425 -0.0963465 1.29926 -0.0963465 1.68464 0.289039L6.9478 5.5522C7.33319 5.93758 7.33319 6.56242 6.9478 6.9478L1.68464 12.211C1.29926 12.5963 0.674425 12.5963 0.289039 12.211C-0.0963465 11.8256 -0.0963465 11.2007 0.289039 10.8154L4.85439 6.25L0.289039 1.68464C-0.0963465 1.29926 -0.0963465 0.674425 0.289039 0.289039Z" fill="#BFE1E1"/>
+    </svg>
+    
+    
+</ng-template>
+<ng-template matStepperIcon="arrow-back">
+  
+  <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.289039 0.289039C0.674425 -0.0963465 1.29926 -0.0963465 1.68464 0.289039L6.9478 5.5522C7.33319 5.93758 7.33319 6.56242 6.9478 6.9478L1.68464 12.211C1.29926 12.5963 0.674425 12.5963 0.289039 12.211C-0.0963465 11.8256 -0.0963465 11.2007 0.289039 10.8154L4.85439 6.25L0.289039 1.68464C-0.0963465 1.29926 -0.0963465 0.674425 0.289039 0.289039Z" fill="#40A5A6"/>
+    </svg>
+    
+    
+</ng-template>
+
+<!-- changed step icons -->
+
+    <mat-step [stepControl]="Form21" [state]="stepOneState" >
+      
+      <div>
+        <form [formGroup]="Form21" >
+          <ng-template matStepLabel>Company Information</ng-template>
+          <div class="row">
+            <div class="col-lg-3 col-m-6 col-sm-6">
+              <div class="form-group">
+                <div class="image-upload">
+                  <label for="file-input">
+                    <img src="assets/img/Frame.png" />
+                    <p
+
+                      *ngIf="
+                        imgName !== '' || imgName !== undefined
+                      "
+                    >
+                      {{ imgName }}
+                    </p>
+                    <p
+                      *ngIf="imgName == '' || imgName == undefined"
+                    >
+                      {{ "Add Company Logo" | translate }}
+                    </p>
+                  </label>
+
+                  <input
+                    id="file-input"
+                    type="file"
+                    #file
+                    (change)="preview(file.files)"
+                    accept="image/*"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 mr-4">
+              <div class="form-group">
+                <label class="label-key mt-5">
+                  *{{ "Company Name - EN" | translate }}
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-value"
+                  name="companyNameEN"
+                  formControlName="companyNameEN"
+                />
+                <div
+                  *ngIf="
+                    Form21.get('companyNameEN')?.touched &&
+                    Form21.get('companyNameEN')?.errors
+                  "
+                >
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('companyNameEN')?.errors?.['required']"
+                    >
+                      {{ "this field is required" | translate }}
+                    </mat-error>
+                  </div>
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('companyNameEN')?.errors?.['minlength']"
+                    >
+                      {{ "minlength is 3 character" | translate }}
+                    </mat-error>
+                  </div>
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('companyNameEN')?.errors?.['maxlength']"
+                    >
+                      {{ "maxlength is 50 character" | translate }}
+                    </mat-error>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="label-key mt-3">
+                  *{{ "Company Name - AR" | translate }}
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-value"
+                  name="CompanyNameAR"
+                  formControlName="CompanyNameAR"
+                />
+                <div
+                  *ngIf="
+                    Form21.get('CompanyNameAR')?.touched &&
+                    Form21.get('CompanyNameAR')?.errors
+                  "
+                >
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('CompanyNameAR')?.errors?.['required']"
+                    >
+                      {{ "this field is required" | translate }}
+                    </mat-error>
+                  </div>
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('CompanyNameAR')?.errors?.['minlength']"
+                    >
+                      {{ "minlength is 3 character" | translate }}
+                    </mat-error>
+                  </div>
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('CompanyNameAR')?.errors?.['maxlength']"
+                    >
+                      {{ "maxlength is 50 character" | translate }}
+                    </mat-error>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <h3 class="toggle-header">
+                  {{ "VAT Type" | translate }}
+                </h3>
+                <mat-button-toggle-group
+                  name="fontStyle"
+                  aria-label="Font Style"
+                  formControlName="vatType"
+                >
+                  <mat-button-toggle
+                    *ngFor="let vat of vatTypes"
+                    [value]="vat.id"
+                    name="vatType"
+                    >{{ vat.name }}</mat-button-toggle
+                  >
+                </mat-button-toggle-group>
+                <div
+                  *ngIf="
+                    Form21.get('vatType')?.touched &&
+                    Form21.get('vatType')?.errors
+                  "
+                >
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('vatType')?.errors?.['required']"
+                    >
+                      {{ "this field is required" | translate }}
+                    </mat-error>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group custom-margin">
+                <h3 class="toggle-header">
+                  {{ "Company Type" | translate }}
+                </h3>
+                <mat-button-toggle-group
+                  name="fontStyle"
+                  aria-label="Font Style"
+                  formControlName="companyType"
+                >
+                  <mat-button-toggle
+                    *ngFor="let company of companyTypes"
+                    [value]="company.id"
+                    name="companyType"
+                    >{{ company.name }}</mat-button-toggle
+                  >
+                </mat-button-toggle-group>
+                <div
+                  *ngIf="
+                    Form21.get('companyType')?.touched &&
+                    Form21.get('companyType')?.errors
+                  "
+                >
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('companyType')?.errors?.['required']"
+                    >
+                      {{ "this field is required" | translate }}
+                    </mat-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label class="label-key mt-5">
+                  {{ "VAT Percentage" | translate }}
+                </label>
+                <input
+                  type="number"
+                  class="form-control input-value"
+                  name="VATPercentage"
+                  formControlName="VATPercentage"
+                />
+                <div
+                  *ngIf="
+                    Form21.get('VATPercentage')?.touched &&
+                    Form21.get('VATPercentage')?.errors
+                  "
+                >
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('VATPercentage')?.errors?.['required']"
+                    >
+                      {{ "this field is required" | translate }}
+                    </mat-error>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="label-key mt-3">
+                  {{ "VAT Number" | translate }}
+                </label>
+                <input
+                  type="number"
+                  class="form-control input-value"
+                  name="VATNumber"
+                  formControlName="VATNumber"
+                />
+                <div
+                  *ngIf="
+                    Form21.get('VATNumber')?.touched &&
+                    Form21.get('VATNumber')?.errors
+                  "
+                >
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('VATNumber')?.errors?.['required']"
+                    >
+                      {{ "this field is required" | translate }}
+                    </mat-error>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2">
+                <div class="custom-toggle">
+                  <input
+                    class="custom-checkboxprice"
+                    type="checkbox"
+                    name="IsPriceIncludeVAT"
+                    formControlName="IsPriceIncludeVAT"
+                  />
+                  <label
+                    class="custom-label"
+                    for="flexSwitchCheckDefault"
+                    >{{ "Pricing type" | translate }}</label
+                  >
+                  <br />
+                  <span class="custom-label2">{{
+                    "pricing includes VAT." | translate
+                  }}</span>
+                </div>
+              </div>
+
+              <div class="form-group custom-margin">
+                <label class="label-key mt-2">
+                  {{ "Receipt notes" | translate }}
+                </label>
+                <input
+                  type="text"
+                  class="form-control input-value"
+                  name="Receiptnotes"
+                  formControlName="Receiptnotes"
+                />
+                <div
+                  *ngIf="
+                    Form21.get('Receiptnotes')?.touched &&
+                    Form21.get('Receiptnotes')?.errors
+                  "
+                >
+                  <div>
+                    <mat-error
+                      *ngIf="Form21.get('Receiptnotes')?.errors?.['required']"
+                    >
+                      {{ "this field is required" | translate }}
+                    </mat-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+          class="flex-sec-btns"
+
+          >
+            <button
+              matStepperNext
+  
+              class="btn-gred nxtbtn3"
+              #nextBtn
+              (click)="changeStatusOfStepTwo()"
+              [disabled]="Form21.invalid"
+            >
+              {{ "Next" | translate }}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 8H15M15 8L8 1M15 8L8 15"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="Form22" #step2 [state]="stepTwoState">
+      <form
+        [formGroup]="Form22"
+        class="position-relative"
+      >
+      <ng-template matStepLabel>Company Address</ng-template>
+        <div class="row">
+        
+          <div class="col-lg-5 col-m-12 col-sm-12">
+            <div class="form-group mt-2">
+              <label
+                for="selectCountry"
+                class="col-sm-2 control-label label-key "
+                >{{ "Country" | translate }}</label
+              >
+              <select
+                class="form-select custom-select"
+                id="selectCountry"
+                formControlName="Country"
+              >
+                <option
+                  *ngFor="let country of countries"
+                  [value]="country.id"
+                  class="custom-option"
+                >
+                  {{ country.name }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  Form22.get('Country')?.touched &&
+                  Form22.get('Country')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form22.get('Country')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label
+                for="selectCity"
+                class="col-sm-2 control-label label-key "
+                >{{ "City" | translate }}</label
+              >
+              <select
+                class="form-select"
+                id="selectCity"
+                formControlName="City"
+              >
+                <option
+                  *ngFor="let city of cities"
+                  [value]="city.id"
+                  class="custom-option"
+                >
+                  {{ city.name }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  Form22.get('City')?.touched &&
+                  Form22.get('City')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form22.get('City')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label
+                for="selectDistrict"
+                class="col-sm-2 control-label label-key "
+                >{{ "District" | translate }}</label
+              >
+              <select
+                class="form-select"
+                id="selectDistrict"
+                formControlName="District"
+              >
+                <option
+                  *ngFor="let district of districts"
+                  [value]="district.id"
+                  class="custom-option"
+                >
+                  {{ district.name }}
+                </option>
+              </select>
+              <div
+                *ngIf="
+                  Form22.get('District')?.touched &&
+                  Form22.get('District')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form22.get('District')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-m-12 col-sm-12">
+            <div class="form-group">
+              <label class="label-key mt-2">{{
+                "Street" | translate
+              }}</label>
+              <input
+                type="text"
+                class="form-control custom-input input-value"
+                name="Street"
+                formControlName="Street"
+              />
+              <div
+                *ngIf="
+                  Form22.get('Street')?.touched &&
+                  Form22.get('Street')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form22.get('Street')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="label-key mt-2">{{
+                "Building Number" | translate
+              }}</label>
+              <input
+                type="text"
+                class="form-control custom-input input-value"
+                name="BuildingNumber"
+                formControlName="BuildingNumber"
+              />
+              <div
+                *ngIf="
+                  Form22.get('BuildingNumber')?.touched &&
+                  Form22.get('BuildingNumber')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form22.get('BuildingNumber')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form22.get('BuildingNumber')?.errors?.['pattern']"
+                  >
+                    {{ "Enter Digits only" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="label-key mt-2">{{
+                "Postal Code" | translate
+              }}</label>
+              <input
+                type="text"
+                class="form-control custom-input input-value"
+                name="PostalCode"
+                formControlName="PostalCode"
+              />
+              <div
+                *ngIf="
+                  Form22.get('PostalCode')?.touched &&
+                  Form22.get('PostalCode')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form22.get('PostalCode')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form22.get('PostalCode')?.errors?.['pattern']"
+                  >
+                    {{ "Enter Digits only" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <a [routerLink]="" class="detect-address">{{
+                "Detect My Address" | translate
+              }}</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-sec-btns">
+          <button matStepperPrevious class="btn-gred  prevbtn3" (click)="changeStepOneStatus()" #prevbtn>
+            <svg
+              width="8"
+              height="13"
+              viewBox="0 0 8 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M7.44534 12.211C7.05995 12.5963 6.43512 12.5963 6.04973 12.211L0.786572 6.9478C0.401187 6.56242 0.401187 5.93758 0.786572 5.5522L6.04973 0.289039C6.43512 -0.096346 7.05995 -0.096346 7.44534 0.28904C7.83072 0.674425 7.83072 1.29926 7.44534 1.68465L2.87998 6.25L7.44534 10.8154C7.83072 11.2007 7.83072 11.8256 7.44534 12.211Z"
+                fill="white"
+              />
+            </svg>
+
+            {{ "Back" | translate }}
+          </button>
+          <button
+          (click)="changeStatsOfStepTwo()"
+            matStepperNext
+            class="btn-gred nxtbtn3"
+            #nextBtn2
+            [disabled]="Form22.invalid"
+          >
+            {{ "Next" | translate }}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 8H15M15 8L8 1M15 8L8 15"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="Form23" [state]="stepThreeState">
+      <div class="row">
+        <div class="col-lg-6">
+          <form [formGroup]="Form23" >
+            <ng-template matStepLabel>Contact Information</ng-template>
+            <div class="form-group mt-2">
+              <label class="label-key mt-2">{{
+                "Master Branch Phone Number" | translate
+              }}</label>
+              <input
+                type="text"
+                class="form-control input-value"
+                name="masterPhone"
+                formControlName="masterPhone"
+ 
+              />
+              <div
+                *ngIf="
+                  Form23.get('masterPhone')?.touched &&
+                  Form23.get('masterPhone')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form23.get('masterPhone')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form23.get('masterPhone')?.errors?.['pattern']"
+                  >
+                    {{ "Enter Digits only" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label class="label-key mt-2">{{
+                "Master Branch Mobile Number" | translate
+              }}</label>
+              <input
+                type="text"
+                class="form-control input-value"
+                name="masterMobile"
+                formControlName="masterMobile"
+              />
+              <div
+                *ngIf="
+                  Form23.get('masterMobile')?.touched &&
+                  Form23.get('masterMobile')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form23.get('masterMobile')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form23.get('masterMobile')?.errors?.['pattern']"
+                  >
+                    {{ "Enter Digits only" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label class="label-key mt-2">{{
+                "Contact Person" | translate
+              }}</label>
+              <input
+                type="text"
+                class="form-control input-value"
+                name="contactPerson"
+                formControlName="contactPerson"
+              />
+              <div
+                *ngIf="
+                  Form23.get('contactPerson')?.touched &&
+                  Form23.get('contactPerson')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form23.get('contactPerson')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form23.get('contactPerson')?.errors?.['pattern']"
+                  >
+                    {{ "Enter Digits only" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+            
+          </form>
+
+        </div>
+        <div class="flex-sec-btns">
+          <button
+          (click)="changeStepThreeStatus()"
+            matStepperPrevious
+            class="btn-gred prevbtn3"
+            #prevbtn
+          >
+            <svg
+              width="8"
+              height="13"
+              viewBox="0 0 8 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M7.44534 12.211C7.05995 12.5963 6.43512 12.5963 6.04973 12.211L0.786572 6.9478C0.401187 6.56242 0.401187 5.93758 0.786572 5.5522L6.04973 0.289039C6.43512 -0.096346 7.05995 -0.096346 7.44534 0.28904C7.83072 0.674425 7.83072 1.29926 7.44534 1.68465L2.87998 6.25L7.44534 10.8154C7.83072 11.2007 7.83072 11.8256 7.44534 12.211Z"
+                fill="white"
+              />
+            </svg>
+
+            {{ "Back" | translate }}
+          </button>
+          <button
+            matStepperNext
+            class="btn-gred nxtbtn3"
+            #nextBtn2
+            [disabled]="Form23.invalid"
+            
+          >
+            {{ "Next" | translate }}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 8H15M15 8L8 1M15 8L8 15"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="Form24" [state]="stepFourState">
+      <form [formGroup]="Form24">
+        <ng-template matStepLabel>Add license Period</ng-template>
+        <div class="row">
+          <div class="col-lg-6">
+            <div appearance="fill">
+              <p>{{ "Start Date" | translate }}</p>
+              <mat-card class="demo-inline-calendar-card">
+                <mat-calendar
+                  [(selected)]="startDate"
+                  (selectedChange)="onSelectDate($event)"
+                  [maxDate]="maxDate"
+                ></mat-calendar>
+              </mat-card>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div appearance="fill">
+              <p>{{ "End Date" | translate }}</p>
+
+              <mat-card class="demo-inline-calendar-card">
+                <mat-calendar
+                  [(selected)]="endDate"
+                  (selectedChange)="onSelectDate($event)"
+                  [minDate]="maxDate"
+                ></mat-calendar>
+              </mat-card>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <h3 class="toggle-header">
+                {{ "OR Choose a specific period" | translate }}
+              </h3>
+              <mat-button-toggle-group
+                name="fontStyle"
+                aria-label="Font Style"
+                formControlName="numberOfLicenseYears"
+                (change)="numberOfLicenseYearsSelect($event)"
+              >
+                <mat-button-toggle value="1" name="dateRange">{{
+                  "1 Year" | translate
+                }}</mat-button-toggle>
+                <mat-button-toggle value="2" name="dateRange">{{
+                  "2 Year" | translate
+                }}</mat-button-toggle>
+                <mat-button-toggle value="3" name="dateRange">{{
+                  "3 Year" | translate
+                }}</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="flex-sec-btns">
+            <button
+            (click)="changeStatusOfStepFour()"
+              matStepperPrevious
+              class="btn-gred prevbtn-company"
+              #prevbtn
+            >
+              <svg
+                width="8"
+                height="13"
+                viewBox="0 0 8 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M7.44534 12.211C7.05995 12.5963 6.43512 12.5963 6.04973 12.211L0.786572 6.9478C0.401187 6.56242 0.401187 5.93758 0.786572 5.5522L6.04973 0.289039C6.43512 -0.096346 7.05995 -0.096346 7.44534 0.28904C7.83072 0.674425 7.83072 1.29926 7.44534 1.68465L2.87998 6.25L7.44534 10.8154C7.83072 11.2007 7.83072 11.8256 7.44534 12.211Z"
+                  fill="white"
+                />
+              </svg>
+
+              {{ "Back" | translate }}
+            </button>
+            <button
+              matStepperNext
+              class="btn-gred nxtbtn-company"
+              #nextBtn2
+              [disabled]="Form24.invalid"
+              (click)="submit()"
+            >
+              {{ "Done" | translate }}
+
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+   
+  </mat-stepper>

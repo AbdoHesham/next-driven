@@ -1,0 +1,77 @@
+.body{
+  height: 100vh;
+}
+.header {
+  height: 86px;
+  background: #205353;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.border-bottom {
+  height: 2px;
+  background: #eceaf2;
+  border-radius: 8px;
+  margin-block: 15px;
+}
+.btn-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom:30px;
+    button {
+      flex: 0 0 33.333333%;
+      height: 50px;
+    }
+  }
+  .code {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: inherit;
+
+    input[type="password"]  {
+      width: 28px;
+      height: 28px;
+      border: 1px solid #bfe1e1;
+      border-radius: 8px;
+      margin-inline: 5px;
+      font-size: 49px;
+      color: #40a5a6;
+      padding: 5px;
+      outline: none;
+  
+    }
+    //   input[type="password"] {
+    // 	font-family: "fontello";
+    // 	font-style: normal;
+    // 	font-weight: normal;
+    // 	speak: none;
+  
+    // 	/* For safety - reset parent styles, that can break glyph codes*/
+    // 	font-variant: normal;
+    // 	text-transform: none;
+  
+    // 	/* Font smoothing. That was taken from TWBS */
+    // 	// -webkit-font-smoothing: antialiased;
+    //     background: #40A5A6;
+    // 	// -moz-osx-font-smoothing: grayscale;
+    // 	/* Uncomment for 3D effect */
+    // 	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  
+    // 	/* add spacing to better separate each image */
+    // 	letter-spacing: 2px;
+    // }
+    // ::ng-deep span.code-hidden input {
+    //     width: 28px;
+    //     height: 28px;
+    //     border: 1px solid #bfe1e1;
+    //     border-radius: 8px;
+    //     margin-inline:  5px;
+    //     font-size: 49px;
+    //     color: #40A5A6;
+    // }
+  }
+  
+  

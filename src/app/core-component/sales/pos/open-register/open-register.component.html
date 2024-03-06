@@ -1,0 +1,127 @@
+<div class="body bg-main-grey">
+  <!-- <div class="d-flex"> -->
+  <div class="header px-3">
+    <!-- <img src="../../../../assets/img/icons/arrow-left.png" alt="arrow-left" /> -->
+    
+  </div>
+  <div class="px-3">
+    <div class="row">
+      <div
+        class="col-md-5 p-3"
+        style="
+          border-right: 1px solid #ffffff;
+          border-radius: 8px;
+          box-shadow: 3px 0px 16px rgb(16 24 40 / 8%);
+          height: 88vh;
+        "
+      >
+        <div class="d-flex" style="justify-content: space-between">
+          <div>
+            <p>Last opened</p>
+            <p>{{data?.lastOpenedTime | date :"medium"}}</p>
+            <p>By employee</p>
+            <p>{{data?.openedEmployee}}</p>
+          </div>
+          <div>
+            <p>Last closed</p>
+            <p>{{data?.lastClosedTime | date :"medium"}}</p>
+            <p>By employee</p>
+            <p>Lorem ipsum</p>
+          </div>
+        </div>
+        <div class="border-bottom"></div>
+        <div class="d-flex" style="justify-content: space-between">
+          <div>
+            <p>Opening amount</p>
+          </div>
+          <div>
+            <p>{{data?.openingAmount | currency : "SAR" : "\u0631\u002e\u0633\u002e"}}</p>
+          </div>
+        </div>
+        <div class="border-bottom"></div>
+        <div class="d-flex" style="justify-content: space-between">
+          <div>
+            <p>Cash sales</p>
+          </div>
+          <div>
+            <p>{{data?.cashSales | currency : "SAR" : "\u0631\u002e\u0633\u002e"}}</p>
+          </div>
+        </div>
+        <div class="border-bottom"></div>
+        <div class="d-flex" style="justify-content: space-between">
+          <div>
+            <p>Refunds</p>
+          </div>
+          <div>
+            <p>{{data?.refunds | currency : "SAR" : "\u0631\u002e\u0633\u002e"}}</p>
+          </div>
+        </div>
+        <div class="border-bottom"></div>
+        <div class="d-flex" style="justify-content: space-between">
+          <div>
+            <p>Closing Amount</p>
+          </div>
+          <div>
+            <p>{{data?.closingAmount | currency : "SAR" : "\u0631\u002e\u0633\u002e"}}</p>
+          </div>
+        </div>
+        <div class="border-bottom"></div>
+        <div class="d-flex" style="justify-content: space-between">
+          <div>
+            <b>Variance </b>
+          </div>
+          <div>
+            <b>{{data?.variance | currency : "SAR" : "\u0631\u002e\u0633\u002e"}}</b>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-7"
+        style="display: flex; justify-content: center; padding-top: 10%"
+      >
+        <div class="code">
+          <form>
+            <div style="display: flex; justify-content: space-between">
+              <h4>
+                <b>{{ "Opening amount:" | translate }}</b>
+              </h4>
+              <h2>
+                <b>
+                  {{
+                    code == ""
+                      ? "0,00"
+                      : (code | currency : "SAR" : "\u0631\u002e\u0633\u002e")
+                  }}</b
+                >
+              </h2>
+            </div>
+            <div class="btn-group">
+              <button mat-stroked-button (click)="btnClick(1)">1</button
+              ><button mat-stroked-button (click)="btnClick(2)">2</button
+              ><button mat-stroked-button (click)="btnClick(3)">3</button
+              ><button mat-stroked-button (click)="btnClick(4)">4</button
+              ><button mat-stroked-button (click)="btnClick(5)">5</button
+              ><button mat-stroked-button (click)="btnClick(6)">6</button
+              ><button mat-stroked-button (click)="btnClick(7)">7</button
+              ><button mat-stroked-button (click)="btnClick(8)">8</button
+              ><button mat-stroked-button (click)="btnClick(9)">9</button
+              ><button mat-stroked-button (click)="resetCodeInput()">C</button
+              ><button mat-stroked-button (click)="btnClick(0)">0</button
+              ><button mat-stroked-button (click)="removeLastIndexInCode()">
+                <img
+                src="assets/img/icons/delete.svg"
+                  alt=""
+                  srcset=""
+                />
+              </button>
+            </div>
+            <button class="btn btn-login" (click)="openRegister()">
+              {{ "Open Register" | translate }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>

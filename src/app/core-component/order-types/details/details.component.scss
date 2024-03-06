@@ -1,0 +1,147 @@
+.details-title {
+  font-family: "Gilroy", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  /* identical to box height, or 133% */
+
+  padding-top: 30px;
+  padding-bottom: 24px;
+  /* Gray/600 */
+
+  color: #475467;
+  margin-left: -20px;
+}
+[dir="rtl"] .details-title {
+  margin-right: -20px;
+}
+.details-header {
+  font-family: "Gilroy", sans-serif;
+  font-style: normal;
+
+  /* identical to box height */
+  margin-right: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  /* Gray/500 */
+  padding-bottom: -50px;
+  color: #475467;
+  margin-right: 30px;
+}
+[dir="rtl"] .main-list h2 {
+  margin-right: 30px;
+  padding-right: 20px;
+}
+.main-details {
+  border-radius: 8px;
+
+  height: 515px;
+}
+.head-title {
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.icon {
+  // height: 30px;
+  margin-inline: 48px;
+  margin-top: 33px;
+}
+[dir="rtl"] ul li {
+  margin-right: 10px;
+  padding: 5px 25px 5px 10px;
+
+  background: url("/assets/img/Rectangle 9025 (1).png") no-repeat right center;
+}
+ul li {
+  background: url("/assets/img/Rectangle 9025 (1).png") no-repeat left center;
+  padding: 5px 10px 5px 25px;
+  list-style: none;
+  margin: 0;
+  vertical-align: middle;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.main-list h2 {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+  /* identical to box height */
+
+  /* Gray/500 */
+
+  color: #667085;
+
+  margin-bottom: 30px;
+  margin-top: 10px;
+  padding-left: 25px;
+}
+[dir="rtl"] .list-details {
+  margin-right: 20px;
+}
+.list-details {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  margin-left: 20px;
+
+  /* PrimaryColor/700 */
+
+  color: #40a5a6;
+}
+.main-list {
+  margin-left: 20px;
+}
+
+.list-info {
+  margin-left: -27px;
+}
+[dir="rtl"] .edit-btn {
+  float: left;
+  margin-left: 60px;
+}
+.edit-btn {
+  margin-right: 60px;
+  margin-top: 80px;
+
+  font-style: normal;
+  float: right;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  color: #ffffff;
+}
+@media (max-width: 600px) {
+  .main-details {
+    height: 100%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .main-details {
+    height: 100%;
+  }
+}
+mat-dialog-content {
+  width: 598px !important;
+  height: auto !important;
+  // border-radius: 16px;
+  // padding:50px;
+}
+@media only screen and (max-width: 1100px) {
+  mat-dialog-content {
+    width: auto !important;
+    height: auto !important;
+  }
+}
+::ng-deep.mat-dialog-container {
+  border-radius: 16px;
+}

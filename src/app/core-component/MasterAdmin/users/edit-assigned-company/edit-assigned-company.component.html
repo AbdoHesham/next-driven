@@ -1,0 +1,67 @@
+<div mat-dialog-title style="display: flex; justify-content: space-between">
+  <h2 class="company-header">{{ "Assign Company" | translate }}</h2>
+  <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<form [formGroup]="Form">
+  <mat-dialog-content>
+    <div class="row">
+      <div class="col-lg-6" *ngIf="!show && altCompaniesForDDL?.length > 0">
+        <mat-form-field appearance="fill" style="width: 100%">
+          <mat-label>{{ "Select Company" | translate }}</mat-label>
+          <mat-select disableRipple formControlName="companyID">
+            <mat-option
+              *ngFor="let company of altCompaniesForDDL"
+              [value]="company.id"
+              >{{ company.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <!-- <select class="form-select" formControlName="companyID">
+          <option *ngFor="let company of altCompaniesForDDL" [value]="company.id" >{{company.name}}</option>
+        </select> -->
+      </div>
+      <div class="col-lg-4" *ngIf="!show">
+        <span class="company-manager" *ngIf="altCompaniesForDDL?.length < 1"
+          >We haven't added any company yet.</span
+        >
+        <span>
+          <a
+            class="company-link"
+            (click)="toggle()"
+            *ngIf="!show"
+          >
+            Create New Company</a
+          ></span
+        >
+      </div>
+    </div>
+    <div *ngIf="show">
+      <app-create-sepling-company
+        (companyCreated)="companyCreated($event)"
+      ></app-create-sepling-company>
+
+      <!-- <h2 class=" header "> {{"Create New Company"|translate}} </h2> -->
+    </div>
+  </mat-dialog-content>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <mat-dialog-actions align="end">
+        <div class="main-stepper-btn">
+          <button
+            class="btn-gred"
+            style="width: 104px"
+            [disabled]="Form.invalid"
+            (click)="submit()"
+          >
+            <!-- <mat-icon [ngStyle]="{ color: 'white' }">arrow_forward</mat-icon> -->
+            Save Edit
+          </button>
+        </div>
+      </mat-dialog-actions>
+    </div>
+  </div>
+</form>

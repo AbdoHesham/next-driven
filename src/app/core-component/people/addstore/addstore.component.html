@@ -1,0 +1,238 @@
+<div class="page-header">
+    <div class="page-title">
+      <h4>{{"Store Management"|translate}}</h4>
+      <h6>{{"Add/Update Store"|translate}}</h6>
+    </div>
+  </div>
+  <!-- /add -->
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="Form">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Store Name" | translate }} *</label>
+              <input
+                type="text"
+                name="StoreName"
+                formControlName="StoreName"
+                required
+              />
+              <div
+                *ngIf="
+                  Form.get('StoreName')?.touched && Form.get('StoreName')?.errors
+                "
+              >
+                <div *ngIf="Form.get('StoreName')?.errors?.['required']">
+                  <span class="text-danger">
+                    {{ "this field is required" | translate }}
+                  </span>
+                </div>
+                <div *ngIf="Form.get('StoreName')?.errors?.['minlength']">
+                  <span class="text-danger">
+                    {{ "minlength is 3 character" | translate }}
+                  </span>
+                </div>
+                <div *ngIf="Form.get('StoreName')?.errors?.['maxlength']">
+                  <span class="text-danger">
+                    {{ "maxlength is 50 character" | translate }}
+                  </span>
+                </div>
+                <div *ngIf="Form.get('StoreName')?.errors?.['pattern']">
+                  <span class="text-danger">
+                    {{ "Enter characters only" | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "User Name" | translate }} *</label>
+              <input
+                type="text"
+                name="UserName"
+                formControlName="UserName"
+                required
+              />
+              <div
+                *ngIf="
+                  Form.get('UserName')?.touched && Form.get('UserName')?.errors
+                "
+              >
+                <div>
+                  <span
+                    class="text-danger"
+                    *ngIf="Form.get('UserName')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-12" >
+            <div class="form-group" >
+              <label>{{ "Password" | translate }} *</label>
+              <div class="pass-group">
+                <input
+                  [type]="password"
+                  name="Password"
+                  formControlName="Password"
+                  required
+                  class="pass-input"
+                />
+                <span
+                  class="fas toggle-password fa-eye"
+                  (click)="onClick()"
+                  *ngIf="show"
+                ></span>
+                <span
+                  class="fas toggle-password fa-eye-slash"
+                  (click)="onClick()"
+                  *ngIf="!show"
+                ></span>
+                <div
+                  *ngIf="
+                    Form.get('Password')?.touched && Form.get('Password')?.errors
+                  "
+                >
+                  <div>
+                    <span
+                      class="text-danger"
+                      *ngIf="Form.get('Password')?.errors?.['required']"
+                    >
+                      {{ "this field is required" | translate }}
+                    </span>
+                  </div>
+                  <div>
+                    <span
+                      class="text-danger"
+                      *ngIf="Form.get('Password')?.errors?.['minlength']"
+                    >
+                      {{ "minlength is 8 character" | translate }}
+                    </span>
+                  </div>
+                  <div>
+                    <span
+                      class="text-danger"
+                      *ngIf="Form.get('Password')?.errors?.['maxlength']"
+                    >
+                      {{ "maxlength is 50 character" | translate }}
+                    </span>
+                  </div>
+                  <div>
+                    <span
+                      class="text-danger"
+                      *ngIf="Form.get('Password')?.errors?.['pattern']"
+                    >
+                      {{ "Password Should Complex Pattern" | translate }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Phone" | translate }} *</label>
+              <input
+                type="text"
+                name="Phone"
+                
+                formControlName="Phone"
+                required
+              />
+              <div
+                *ngIf="
+                  Form.get('Phone')?.touched &&
+                  Form.get('Phone')?.errors
+                "
+              >
+                <div>
+                  <span
+                    class="text-danger"
+                    *ngIf="Form.get('Phone')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="form-group">
+              <label>{{ "Email" | translate }} *</label>
+              <input
+                type="email"
+                name="Email"
+                class="form-control"
+                formControlName="Email"
+                required
+              />
+              <div
+                *ngIf="Form.get('Email')?.touched && Form.get('Email')?.errors"
+              >
+                <div>
+                  <span
+                    class="text-danger"
+                    *ngIf="Form.get('Email')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </span>
+                </div>
+                <div>
+                  <span
+                    class="text-danger"
+                    *ngIf="Form.get('Email')?.errors?.['email']"
+                  >
+                    {{ "please enter valid email" | translate }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+                
+                <div class="image-upload">
+                    <input type="file"
+                    id="file-input"
+                    
+                      #file
+                   (change)="preview(file.files)"
+                   accept="image/*">
+                    <div class="image-uploads">
+                        <img src="assets/img/icons/upload.svg" alt="img">
+                        <h4 *ngIf="imgName !== '' || imgName !== undefined">
+                            {{ imgName }}
+                        </h4>
+                          <h4 *ngIf="imgName == '' || imgName == undefined">
+                            {{ "Add" | translate }}
+                            <span style="color: #667085">{{ "Or" | translate }}</span>
+                            {{ "Select" | translate }}
+                            <span style="color: #667085">{{
+                              "Category Icon" | translate
+                            }}</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <div class="col-lg-12">
+            <button
+              (click)="submit()"
+              [disabled]="Form.invalid"
+              class="btn btn-submit me-2"
+            >
+              {{ "Submit" | translate }}
+            </button>
+            <a class="btn btn-cancel" [routerLink]="routes.storeList">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- /add -->
+  

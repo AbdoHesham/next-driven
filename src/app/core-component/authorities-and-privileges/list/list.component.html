@@ -1,0 +1,304 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>{{ "Authorities and Privileges" | translate }}</h4>
+  </div>
+  <div class="page-btn">
+    <button (click)="create()" class="btn btn-added">
+      <img src="assets/img/icons/plus.svg" alt="img" />{{
+        "Create New Role" | translate
+      }}
+    </button>
+  </div>
+</div>
+
+<!-- /product list -->
+<div class="card">
+  <div class="card-body">
+    <div class="table-top">
+      <div class="search-set">
+        <!-- <div class="search-path">
+            <a
+              (click)="showFilter = !showFilter"
+              [class.setclose]="showFilter == true"
+              class="btn btn-filter"
+              id="filter_search"
+            >
+              <img
+                *ngIf="showFilter == false"
+                src="assets/img/icons/filter.svg"
+                alt="img"
+              />
+              <span
+                ><img
+                  *ngIf="showFilter == true"
+                  src="assets/img/icons/filter.svg"
+                  alt="img"
+              /></span>
+            </a>
+          </div> -->
+        <div class="search-input">
+          <a class="btn btn-searchset"
+            ><img src="assets/img/icons/search-white.svg" alt="img"
+          /></a>
+          <div class="dataTables_filter">
+            <label>
+              <input
+                [(ngModel)]="searchDataValue"
+                (ngModelChange)="searchData(searchDataValue)"
+                type="search"
+                class="form-control"
+                placeholder="Search..."
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="wordset">
+        <ul>
+          <li>
+            <a data-bs-toggle="tooltip" data-bs-placement="top" title="pdf"
+              ><img src="assets/img/icons/pdf.svg" alt="img"
+            /></a>
+          </li>
+          <li>
+            <a
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="excel"
+              (click)="exportToExcel()"
+              ><img src="assets/img/icons/excel.svg" alt="img"
+            /></a>
+          </li>
+          <li>
+            <a data-bs-toggle="tooltip" data-bs-placement="top" title="print"
+              ><img src="assets/img/icons/printer.svg" alt="img"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /Filter -->
+    <div
+      class="card mb-0 border-0"
+      [ngClass]="{
+        'show-sub-menu': showFilter == true,
+        'hide-sub-menu': showFilter == false
+      }"
+    >
+      <div class="card-body pb-0">
+        <div class="row">
+          <div class="col-lg-2 col-sm-6 col-12">
+            <div class="form-group">
+              <select class="form-select">
+                <option>Choose Category</option>
+                <option>Computers</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-6 col-12">
+            <div class="form-group">
+              <select class="form-select">
+                <option>Choose Sub Category</option>
+                <option>Fruits</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-6 col-12">
+            <div class="form-group">
+              <select class="form-select">
+                <option>Choose Sub Brand</option>
+                <option>Iphone</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-1 col-sm-6 col-12 ms-auto">
+            <div class="form-group">
+              <a class="btn btn-filters ms-auto"
+                ><img src="assets/img/icons/search-whites.svg" alt="img"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Filter -->
+    <div class="table-responsive">
+      <table
+        *ngIf="filteredData?.length > 0"
+        mat-table
+        [dataSource]="filteredData"
+        (matSortChange)="sortData($event)"
+        matSort
+        matSortActive="Sno"
+        matSortDirection="asc"
+        matSortDisableClear
+        class="table datanew"
+      >
+        <!--  -->
+        <ng-container *ngFor="let column of columns">
+          <ng-container
+            *ngIf="column.type === 'array2'"
+            [matColumnDef]="column.property"
+          >
+            <th *matHeaderCellDef class="uppercase" mat-header-cell>
+              {{ column.label | translate }}
+            </th>
+
+            <td *matCellDef="let row" mat-cell>
+              <div style="display: flex; align-items: center">
+                <div>
+                  <!-- class="example-margin" -->
+                  <!--                   [dir]="SharedService.dir() == 'ar' ? 'rtl' : 'ltr'"
+       -->
+                </div>
+
+                <div>
+                  <p>
+                    {{
+                      row[column.property] == null
+                        ? "N/A"
+                        : row[column.property]
+                    }}
+                  </p>
+                  <p>
+                    <mat-hint>
+                      {{ row.typeStr }}
+                    </mat-hint>
+                  </p>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngFor="let column of columns">
+          <ng-container
+            *ngIf="column.type === 'text'"
+            [matColumnDef]="column.property"
+          >
+            <th *matHeaderCellDef class="uppercase" mat-header-cell>
+              {{ column.label | translate }}
+            </th>
+            <td
+              *matCellDef="let row; let i = index"
+              mat-cell
+              class="p-relative"
+            >
+              {{ row[column.property] == null ? "N/A" : row[column.property] }}
+            </td>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngFor="let column of columns">
+          <ng-container
+            *ngIf="column.type === 'array4'"
+            [matColumnDef]="column.property"
+          >
+            <th *matHeaderCellDef class="uppercase" mat-header-cell>
+              {{ column.label | translate }}
+            </th>
+            <td *matCellDef="let row" mat-cell>
+              {{
+                row[column.property] == null
+                  ? "N/A"
+                  : (row[column.property] | date : "longDate")
+              }}
+            </td>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngFor="let column of columns">
+          <ng-container
+            *ngIf="column.type === 'array3'"
+            [matColumnDef]="column.property"
+          >
+            <th *matHeaderCellDef class="uppercase" mat-header-cell>
+              {{ column.label | translate }}
+            </th>
+            <td *matCellDef="let row" mat-cell>
+              <div style="display: flex; flex-direction: column">
+                <div
+                  [ngClass]="[
+                    row[column.property] == 1 ? 'active-user' : 'diactive-user'
+                  ]"
+                >
+                  {{
+                    row[column.property] == null
+                      ? "N/A"
+                      : row[column.property] == 1
+                      ? ("Active" | translate)
+                      : ("Inactive" | translate)
+                  }}
+                </div>
+              </div>
+            </td>
+          </ng-container>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>{{ "Actions" | translate }}</th>
+          <td mat-cell *matCellDef="let row">
+            <!-- <span>
+              <img
+                class="mx-1"
+                [src]="
+                  row.companyCustomRoleID !== null
+                    ? 'assets/img/icons/eye.svg'
+                    : 'assets/img/icons/eye1.svg'
+                "
+                [style.pointer-events]="
+                  row.companyCustomRoleID == null ? 'none' : ''
+                "
+                [style.cursor]="
+                  row.companyCustomRoleID == null ? 'none' : 'pointer'
+                "
+                alt=""
+              />
+            </span> -->
+            <span (click)="create(row)"
+              ><img
+                class="mx-2"
+                [src]="
+                  row.companyCustomRoleID !== null
+                    ? 'assets/img/icons/edit.svg'
+                    : 'assets/img/icons/edit-2.svg'
+                "
+                [style.pointer-events]="
+                  row.companyCustomRoleID == null ? 'none' : ''
+                "
+                [style.cursor]="
+                  row.companyCustomRoleID == null ? 'none' : 'pointer'
+                "
+                alt=""
+            /></span>
+            <!-- (click)="delete(row)"  -->
+            <span
+              ><img
+                class="mx-1"
+                [src]="
+                  row.companyCustomRoleID !== null
+                    ? 'assets/img/icons/delete.svg'
+                    : 'assets/img/icons/delete-2.svg'
+                "
+                [style.pointer-events]="
+                  row.companyCustomRoleID == null ? 'none' : ''
+                "
+                [style.cursor]="
+                  row.companyCustomRoleID == null ? 'none' : 'pointer'
+                "
+                alt=""
+            /></span>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="visibleColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: visibleColumns"></tr>
+        <tr *ngIf="filteredData.length === 0">
+          <td colspan="12">
+            <h5 class="no-record">No matching records found</h5>
+          </td>
+        </tr>
+      </table>
+      <custom-pagination></custom-pagination>
+    </div>
+  </div>
+</div>
+<!-- /product list -->

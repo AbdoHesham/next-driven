@@ -1,0 +1,113 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>{{ "Expense Add" | translate }}</h4>
+    <h6>{{ "Add/Update Expenses" | translate }}</h6>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="Form">
+      <div class="row">
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Expense date" | translate }} *</label>
+            <div class="input-groupicon">
+              <ngx-datepicker formControlName="expenseDate"></ngx-datepicker>
+              <div class="addonset">
+                <img src="assets/img/icons/calendars.svg" alt="img" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label> {{ "Reference Number" | translate }} * </label>
+            <input
+              type="text"
+              name="referenceNumber"
+              formControlName="referenceNumber"
+              required
+            />
+            <div
+              *ngIf="
+                Form.get('referenceNumber')?.touched &&
+                Form.get('referenceNumber')?.errors
+              "
+            >
+              <div *ngIf="Form.get('referenceNumber')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label> {{ "Amount" | translate }} * </label>
+            <input
+              type="text"
+              name="amount"
+              formControlName="amount"
+              required
+            />
+            <div
+              *ngIf="Form.get('amount')?.touched && Form.get('amount')?.errors"
+            >
+              <div *ngIf="Form.get('amount')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-6 col-12">
+          <div class="form-group">
+            <label>{{ "Reference User" | translate }} *</label>
+            <select class="form-select" formControlName="referenceUser">
+              <option *ngFor="let item of customers" [value]="item">
+                {{ item }}
+              </option>
+            </select>
+            <div
+              *ngIf="
+                Form.get('referenceUser')?.touched &&
+                Form.get('referenceUser')?.errors
+              "
+            >
+              <div *ngIf="Form.get('referenceUser')?.errors?.['required']">
+                <span class="text-danger">
+                  {{ "this field is required" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label>{{ "Notes" | translate }}</label>
+            <textarea
+              class="form-control"
+              name="notes"
+              formControlName="notes"
+            ></textarea>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <button
+            (click)="submit()"
+            class="btn btn-submit me-2"
+            [disabled]="Form.invalid"
+          >
+            {{ "Submit" | translate }}
+          </button>
+
+          <a [routerLink]="routes.expenseList" class="btn btn-cancel">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

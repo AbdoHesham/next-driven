@@ -1,0 +1,358 @@
+<div class="row" >
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div
+      class="container org-create bg-white "
+      style="height: 95vh"
+      [dir]="SharedService.dir() == 'en' ? 'ltr' : 'rtl'"
+    >
+      <div class="org-header">
+        <!-- <h2>
+          {{
+            id == null
+              ? ("Setup Your Organization" | translate)
+              : ("Edit Your Organization" | translate)
+          }}
+        </h2> -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 px-5">
+          <div>
+            <h2 class="mt-1 mb-3 pb-1 header-text">
+              {{ "Organization information" | translate }}
+            </h2>
+          </div>
+          <form [formGroup]="Form" class="position-relative">
+            <div class="form-group">
+              <label class="label-key mt-2"
+                >{{ "Organization name" | translate }}*</label
+              >
+              <input
+                type="text"
+                class="form-control input-value"
+                name="organizationName"
+                formControlName="organizationName"
+                required
+              />
+
+              <small
+                class="text-danger"
+                *ngIf="Form.get('organizationName')?.errors?.['required'] && Form.get('organizationName')?.touched "
+              >
+                {{ "this field is required" | translate }}
+              </small>
+            </div>
+            <div class="form-group">
+              <label class="label-key mt-2"
+                >{{ "VAT number" | translate }}*</label
+              >
+              <input
+                class="form-control input-value"
+                type="text"
+                name="vatNumber"
+                formControlName="vatNumber"
+              />
+              <div
+                *ngIf="
+                  Form.get('vatNumber')?.touched &&
+                  Form.get('vatNumber')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form.get('vatNumber')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form.get('vatNumber')?.errors?.['minlength']"
+                  >
+                    {{ "minlength is 15 character" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form.get('vatNumber')?.errors?.['maxlength']"
+                  >
+                    {{ "maxlength is 50 character" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error *ngIf="Form.get('vatNumber')?.errors?.['pattern']">
+                    {{ "Enter Digits only" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="label-key mt-2"
+                >{{ "invoice number" | translate }}*</label
+              >
+              <input
+                type="number"
+                class="form-control input-value"
+                name="InvoiceNumber"
+                formControlName="InvoiceNumber"
+                required
+              />
+              <div
+                *ngIf="
+                  Form.get('InvoiceNumber')?.touched &&
+                  Form.get('InvoiceNumber')?.errors
+                "
+              >
+                <div>
+                  <mat-error
+                    *ngIf="Form.get('InvoiceNumber')?.errors?.['required']"
+                  >
+                    {{ "this field is required" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form.get('InvoiceNumber')?.errors?.['minlength']"
+                  >
+                    {{ "minlength is 3 character" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form.get('InvoiceNumber')?.errors?.['maxlength']"
+                  >
+                    {{ "maxlength is 50 character" | translate }}
+                  </mat-error>
+                </div>
+                <div>
+                  <mat-error
+                    *ngIf="Form.get('InvoiceNumber')?.errors?.['pattern']"
+                  >
+                    {{ "Enter Digits only" | translate }}
+                  </mat-error>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6 px-5">
+          <h2 class="mt-1 mb-3 pb-1 header-text">
+            {{ "Account owner information" | translate }}
+          </h2>
+
+      <form [formGroup]="Form2" class="position-relative pb-3">
+        <div class="form-group">
+          <label class="label-key mt-2"
+            >{{ "First Name" | translate }}*</label
+          >
+          <input
+            type="text"
+            class="form-control input-value"
+            name="firstName"
+            formControlName="firstName"
+            required
+          />
+
+          <div
+            *ngIf="
+              Form2.get('firstName')?.touched &&
+              Form2.get('firstName')?.errors
+            "
+          >
+            <div>
+              <mat-error
+                *ngIf="Form2.get('firstName')?.errors?.['required']"
+              >
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error
+                *ngIf="Form2.get('firstName')?.errors?.['minlength']"
+              >
+                {{ "minlength is 3 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error
+                *ngIf="Form2.get('firstName')?.errors?.['maxlength']"
+              >
+                {{ "maxlength is 50 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error
+                *ngIf="Form2.get('firstName')?.errors?.['pattern']"
+              >
+                {{ "Enter character only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label-key mt-2"
+            >{{ "Last Name" | translate }}*</label
+          >
+          <input
+            type="text"
+            class="form-control input-value"
+            name="lastName"
+            formControlName="lastName"
+            required
+          />
+          <div
+            *ngIf="
+              Form2.get('lastName')?.touched &&
+              Form2.get('lastName')?.errors
+            "
+          >
+            <div>
+              <mat-error
+                *ngIf="Form2.get('lastName')?.errors?.['required']"
+              >
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error
+                *ngIf="Form2.get('lastName')?.errors?.['minlength']"
+              >
+                {{ "minlength is 3 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error
+                *ngIf="Form2.get('lastName')?.errors?.['maxlength']"
+              >
+                {{ "maxlength is 50 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form2.get('lastName')?.errors?.['pattern']">
+                {{ "Enter character only" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label-key mt-2"
+            >{{ "Contact Number" | translate }}*</label
+          >
+          <input
+            type="text"
+            class="form-control input-value"
+            name="contactNumber"
+            formControlName="contactNumber"
+            required
+          />
+          <div>
+            <mat-error
+              *ngIf="Form2.get('contactNumber')?.errors?.['required'] && Form2.get('contactNumber')?.touched"
+            >
+              {{ "this field is required" | translate }}
+            </mat-error>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label-key mt-2"> {{ "Email" | translate }}* </label>
+          <input
+            type="email"
+            class="form-control input-value"
+            name="Email"
+            formControlName="Email"
+            required
+          />
+          <div
+            *ngIf="
+              Form2.get('Email')?.touched && Form2.get('Email')?.errors
+            "
+          >
+            <div>
+              <mat-error *ngIf="Form2.get('Email')?.errors?.['required']">
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form2.get('Email')?.errors?.['email']">
+                {{ "please enter valid email" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="id == null">
+          <label class="label-key mt-2"
+            >{{ "Password" | translate }}*</label
+          >
+          <input
+            class="form-control input-value"
+            type="password"
+            name="Password"
+            formControlName="Password"
+            required
+          />
+          <div
+            *ngIf="
+              Form2.get('Password')?.touched &&
+              Form2.get('Password')?.errors
+            "
+          >
+            <div>
+              <mat-error
+                *ngIf="Form2.get('Password')?.errors?.['required']"
+              >
+                {{ "this field is required" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error
+                *ngIf="Form2.get('Password')?.errors?.['minlength']"
+              >
+                {{ "minlength is 8 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error
+                *ngIf="Form2.get('Password')?.errors?.['maxlength']"
+              >
+                {{ "maxlength is 50 character" | translate }}
+              </mat-error>
+            </div>
+            <div>
+              <mat-error *ngIf="Form2.get('Password')?.errors?.['pattern']">
+                {{ "Password Should Complex Pattern" | translate }}
+              </mat-error>
+            </div>
+          </div>
+        </div>
+
+
+      </form>
+        </div>
+      </div>
+      <div class="row pt-5 mb-5">
+        <div class="col-lg-6">
+          <button
+            class="btn-white-outline btn-block "
+            #backBtn
+            (click)="goToOrg()"
+          >
+          {{ "Cancel" | translate }}
+
+          </button>
+        </div>
+        <div class="col-lg-6">
+          <button
+            class="btn-gred btn-block "
+            style="color: white"
+            (click)="Submit()"
+            #subBtn
+            [disabled]="Form2.invalid"
+          >
+            {{ "Done" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,528 @@
+// @import '/src/assets/theme/custom-toggle-btn.scss';
+// input[type="checkbox"] {
+//     position: relative;
+//     width: 44px;
+//     height: 24px;
+//     appearance: none;
+//     background: #e4e7ec;
+//     outline: none;
+//     border-radius: 12px;
+//     margin-top: 30px;
+//     cursor: pointer;
+//   }
+//   input:checked[type="checkbox"] {
+//     background: linear-gradient(180deg, #a0d2d3 0%, #358a8a 100%);
+//     cursor: pointer;
+//   }
+  // input[type="checkbox"]::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 2;
+  //   border-radius: 50%;
+  //   width: 20px;
+  //   height: 20px;
+  
+  //   /* White */
+  
+  //   background: #ffffff;
+  //   /* Shadow/sm */
+  
+  //   box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.1),
+  //     0px 1px 2px rgba(16, 24, 40, 0.06);
+  //   transition: 0.5s;
+  // }
+  // input:checked[type="checkbox"]::before {
+  //   left: 23px;
+  // }
+  .custom-checkboxprice{
+    top:15px;
+  }
+  [dir="rtl"] .custom-checkboxprice{
+    margin-right: 50px;
+    right: 24px;
+    top:10px;
+  }
+  .custom-toggle {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: -12px;
+    
+    margin-top:-6%;
+  }
+  
+  .custom-label {
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+  
+    margin-top: 15px;
+    margin-bottom: 20px;
+    /* Gray/500 */
+  
+    color: #667085;
+  }
+  [dir="rtl"] .custom-label {
+    margin-right: -90px;
+  }
+  .custom-label2 {
+    padding-left: 50px;
+    margin-left: 22px;
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+  
+    /* Gray/500 */
+  
+    color: #667085;
+  }
+  .form-control{
+    width: 95%;
+    border: 1px solid #ECEAF2;
+  border-radius: 8px;
+  }
+  .mat-form-field {
+    background-color: white;
+  }
+  [dir="rtl"] .prevbtn3{
+    margin-left: 60px;
+   
+  }
+  [dir="rtl"] .prevbtn3 svg{
+    rotate: 180deg;
+  }
+  .prevbtn3{
+    right: 0!important;
+   margin-bottom: 10px;
+  
+   margin-right: 60px;
+   bottom: 0;
+   color: #FFFFFF;
+   background: #40A5A6;
+  width: 97px;
+  height: 48px;
+  }
+  .prevbtn-company{
+    right: 0!important;
+   margin-bottom: 10px;
+  
+   margin-right: 60px;
+   bottom: 0;
+   color: #FFFFFF;
+   background: #40A5A6;
+  width: 97px;
+  height: 48px;
+  }
+  [dir="rtl"] .nxtbtn3 svg{
+    rotate: 180deg;
+  }
+  [dir="ltr"] .nxtbtn3{
+    right: 0!important;
+   margin-bottom: 10px;
+   width: 104px; 
+   margin-right: 50px;
+   bottom: 0;
+   color: #FFFFFF;
+   background: #40A5A6;
+  height: 48px;
+  width: 97px; 
+  /* PrimaryColor/700 */
+  
+  background: #40A5A6;
+  border-radius: 8px;
+  
+  }
+  
+  [dir="rtl"] .nxtbtn3{
+      left: 0!important;
+      margin-bottom: 10px;
+      bottom: 10px;
+     width: 97px; 
+     height: 48px;
+     margin-left: 50px;
+     color: #FFFFFF;
+   background: #40A5A6;
+   
+    }
+    [dir="rtl"] .prevbtn-company{
+      margin-right: 50px;
+    }
+    [dir="rtl"] .pnxtbtn-company svg{
+      rotate: 180deg;
+    }
+  .nxtbtn-company{
+    right: 0!important;
+    margin-bottom: 10px;
+    width: 104px; 
+    margin-right: 50px;
+    bottom: 0;
+    color: #FFFFFF;
+    background: #40A5A6;
+   width: 146px;
+   height: 48px;
+   
+   /* PrimaryColor/700 */
+   
+   background: #40A5A6;
+   border-radius: 8px;
+  }
+  .custom-btn{
+  
+    float: right;
+    /* top: 20px; */
+    margin-top: 40px;
+    margin-right: 16px;
+  }
+  .company-link {
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+  
+    align-items: center;
+    text-decoration-line: underline;
+  
+    /* PrimaryColor/700 */
+    margin-top: 6px;
+    display: flex;
+    color: #40a5a6;
+  }
+  .custom-btnnext{
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 30px;
+    padding-right: 15px;
+  
+  }
+  .company-manager {
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+  
+    padding-bottom: 10px;
+    /* Gray/500 */
+  
+    color: #667085;
+  }
+  
+  
+  .detect-address{
+    font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  
+  display: flex;
+      flex-direction: row-reverse;
+      padding-top: 30px;
+      padding-right: 15px;
+  align-items: center;
+  text-decoration-line: underline;
+  
+  /* PrimaryColor/700 */
+  
+      
+  color: #40A5A6;
+  }
+  .custom-checkbox {
+    width: 400px;
+    height: 50px;
+    margin-top: 40px;
+    background: #ffffff;
+    /* Gray/300 */
+  
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+  }
+  .form-select{
+    border: 1px solid #ECEAF2;
+  border-radius: 8px;
+  box-shadow: none;
+  width: 100%;
+  }
+  .custom-option{
+    font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  
+  display: flex;
+  align-items: center;
+  
+  /* Gray/500 */
+  
+  color: #667085;
+  }
+  
+  .mat-button-toggle {
+    width: calc(100% / 3);
+  
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+  
+    /* Gray/400 */
+  
+    color: #98a2b3;
+  }
+  .mat-button-toggle-checked {
+    background: #d9eded;
+    border-radius: 8px;
+  }
+  .mat-button-toggle-group {
+    width: 90%;
+    height: 48px;
+  
+    background: #ffffff;
+    /* Gray/300 */
+  
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+  }
+  .toggle-header {
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+    margin-top: 15px;
+  
+    /* Gray/500 */
+  
+    color: #667085;
+  }
+  .custom-input {
+    height: 40px;
+  }
+  [dir="rtl"] .nxtbtn3 svg{
+    rotate: 180deg;
+  }
+  [dir="ltr"] .nxtbtn3{
+    right: 0!important;
+   margin-bottom: 10px;
+   width: 104px; 
+   margin-right: 50px;
+   bottom: 0;
+   color: #FFFFFF;
+   background: #40A5A6;
+  height: 48px;
+  width: 97px; 
+  /* PrimaryColor/700 */
+  
+  background: #40A5A6;
+  border-radius: 8px;
+  
+  }
+  
+  [dir="rtl"] .nxtbtn3{
+      left: 0!important;
+      margin-bottom: 10px;
+      bottom: 10px;
+     width: 97px; 
+     height: 48px;
+     margin-left: 50px;
+     color: #FFFFFF;
+   background: #40A5A6;
+   
+    }
+    [dir="rtl"] .prevbtn-company{
+      margin-right: 50px;
+    }
+    [dir="rtl"] .pnxtbtn-company svg{
+      rotate: 180deg;
+    }
+  .nxtbtn-company{
+    right: 0!important;
+    margin-bottom: 10px;
+    width: 104px; 
+    margin-right: 50px;
+    bottom: 0;
+    color: #FFFFFF;
+    background: #40A5A6;
+   width: 146px;
+   height: 48px;
+   
+   /* PrimaryColor/700 */
+   
+   background: #40A5A6;
+   border-radius: 8px;
+  }
+  .custom-btn{
+    
+    float: right;
+    /* top: 20px; */
+    margin-top: 40px;
+    margin-right: 16px;
+  }
+  .company-link {
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+  
+    align-items: center;
+    text-decoration-line: underline;
+  
+    /* PrimaryColor/700 */
+    margin-top: 6px;
+    display: flex;
+    color: #40a5a6;
+  }
+  .custom-btnnext{
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 30px;
+    padding-right: 15px;
+  
+  }
+  .company-manager {
+    font-family: "Gilroy";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+  
+    padding-bottom: 10px;
+    /* Gray/500 */
+  
+    color: #667085;
+  }
+  ::ng-deep #custom-stepper .mat-step-icon { 
+    color:#358a8a;
+ }
+  ::ng-deep #custom-stepper .mat-horizontal-stepper-header-container {
+    white-space: nowrap;
+    display: flex;
+   // margin-right: 30%;
+   margin-right: 10%;
+    margin-left: 235px;
+  }
+  ::ng-deep #custom-stepper .mat-step-header .mat-step-label.mat-step-label-active {
+    color: #40A5A6  !important;
+
+  }
+  ::ng-deep #custom-stepper .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+    width: calc(100% /4);
+  }
+  ::ng-deep #custom-stepper .mat-step-header .mat-step-icon-selected,
+::ng-deep #custom-stepper .mat-step-header .mat-step-icon-state-done,
+::ng-deep #custom-stepper .mat-step-header .mat-step-icon-state-arrow-back,
+
+::ng-deep #custom-stepper .mat-step-header .mat-step-icon-state-edit {
+  background: #D9EDED  !important;
+  //border-radius: 20px 0px 0px 20px !important;
+  width: 202px !important ;
+height: 40px !important;
+position: relative;
+
+}
+::ng-deep #custom-stepper .mat-step-icon .mat-step-icon-state-check .mat-step-label .mat-step-text-label .ng-star-inserted {
+  color: #BFE1E1 !important;
+}
+
+::ng-deep #custom-stepper .mat-step-header .mat-step-icon-state-check
+{
+  background: white  !important;
+  //width: 202px !important ;
+  height: 40px !important;
+  position: relative;
+  left: 90px;
+  //color: #BFE1E1 !important;
+
+}
+[dir="rtl"] ::ng-deep #custom-stepper .mat-step-header .mat-step-icon-state-check
+{
+  right: 90px;
+}
+[dir="rtl"] ::ng-deep #custom-stepper .mat-step-icon-content {
+  position: absolute;
+  right: 85%;
+}
+::ng-deep #custom-stepper .mat-step-icon-content {
+  position: absolute;
+  top: 50%;
+  left: 85%;
+  //left:10px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  font-family: 'Gilroy';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 24px;
+/* identical to box height, or 171% */
+
+
+/* PrimaryColor/700 */
+
+color: #40A5A6;
+
+}
+::ng-deep #custom-stepper .mat-step-header .mat-step-label.mat-step-label-active{
+  position: absolute;
+    left: 0;
+    margin-left: 40px
+}
+::ng-deep #custom-stepper
+  .mat-horizontal-stepper-header
+  .mat-step-icon
+  .mat-step-icon-selected {
+  margin-right: 8px;
+  flex: none;
+  margin-bottom: 16px;
+  //border-radius: 20px 0px 0px 20px !important;
+}
+::ng-deep #custom-stepper .mat-stepper-horizontal-line {
+  border-top-width: 0px !important;
+  border-top-style: none !important;
+  flex: auto;
+  height: 0;
+  margin: 0 -16px;
+  min-width: 0px;
+ //position: absolute;
+}
+.header2{
+  margin-top: 20px;
+  font-family: 'Gilroy';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 100%;
+/* or 18px */
+
+display: flex;
+align-items: center;
+
+/* PrimaryColor/700 */
+
+color: #40A5A6;
+ 
+}

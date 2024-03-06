@@ -1,0 +1,49 @@
+<div mat-dialog-content style="width: 335px;">
+  <div mat-dialog-title style="display: flex; justify-content: space-between">
+    <h2>{{ "Role Information" | translate }}</h2>
+    <button class="text-secondary" mat-dialog-close mat-icon-button type="button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>  
+  <div class="row" [dir]="SharedService.dir() == 'ar' ? 'rtl' : 'ltr'">
+    
+    <div class="col-md-8">
+      <div class="main-list">
+        <ul class="list-info">
+          <li class="details-header">
+            {{
+              "Role Name" | translate
+            }}
+            :<span class="list-details">
+             
+            </span>
+          </li>
+          <li class="details-header">
+            {{ "Creation Date" | translate }}:<span class="list-details">
+             
+            </span>
+          </li>
+          <li class="details-header">
+            {{ "Role Type" | translate }}:<span class="list-details">
+             </span
+            >
+          </li>
+          <li  style="font-weight:700px;">
+           <a
+           [routerLink]=""
+            (click)="gotoedit()"
+            class="show-assign"
+            
+           > {{ "Show Assigned Modules" | translate }}</a> 
+          
+           
+            
+          </li>
+          
+  
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

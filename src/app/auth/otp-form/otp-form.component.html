@@ -1,0 +1,61 @@
+<div class="account-content">
+  <div class="login-wrapper">
+    <div class="login-content">
+      <div class="login-userset">
+        <div class="login-logo logo-normal">
+          <img src="assets/img/logo.png" alt="img" />
+        </div>
+        <a class="login-logo logo-white">
+          <img src="assets/img/logo-white.png" alt="" />
+        </a>
+        <div class="text-center c-black">
+          <h2 class="mt-1 mb-5 pb-1 header-text c-black">
+            {{ "Verify Your Account!" | translate }}
+          </h2>
+          <p class="text-msg c-black">
+            {{ "please check your email and enter otp number" | translate }}
+          </p>
+          <p class="text-msg c-black">
+            {{ "to verfiy your account" | translate }}
+          </p>
+        </div>
+        <div class="container">
+          <form [formGroup]="otpForm" novalidate>
+            <div class="form-group">
+              <label class="mb-3 label-key c-black">{{
+                "OTP Number" | translate
+              }}</label>
+              <input
+                style="margin-top: -15px"
+                type="text"
+                class="form-control input-value"
+                type="text"
+                name="otp"
+                formControlName="otp"
+                required
+                placeholder="{{ 'OTP Number' | translate }}"
+              />
+              <small
+                class="text-danger"
+                *ngIf="otpForm.get('otp')?.errors?.['required'] && otpForm.get('otp')?.touched "
+              >
+                {{ "this field is required" | translate }}
+              </small>
+            </div>
+            <div class="pt-5 mb-5">
+              <div class="form-login">
+                <a  class="btn btn-login"    (click)="verify()"
+                #verfiyBtn
+                >{{ "Verify" | translate }}</a>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="login-img">
+      <img src="assets/img/login.jpg" alt="img" />
+    </div>
+  </div>
+</div>
